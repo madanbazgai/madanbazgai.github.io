@@ -1,0 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+nav {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10vh;
+  z-index: 10;
+  width: 100%;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  width: 101%;
+}
+.logo a img {
+  height: 45px;
+}
+
+nav ul {
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.logo > a > p {
+  float: right;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+ul li {
+  display: inline-block;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+ul > li > a {
+  text-decoration: none;
+  color: white;
+}
+
+#intro-page {
+  height: 100vh;
+  background: linear-gradient(to top right, #4e3c3c, #864e4e);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.clock {
+  height: 30%;
+}
+
+.intro-text {
+  text-align: left;
+}
+.intro-main {
+  color: white;
+  font-size: 60px;
+  letter-spacing: 15px;
+}
+.intro-sub {
+  color: #efefef;
+  letter-spacing: 2px;
+}
+
+.first-product {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: rgb(193, 185, 156);
+}
+.product-container {
+  width: 50%;
+  text-align: center;
+  line-height: 2;
+}
+.product-container > h2 {
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.product-container > h4 {
+  font-size: 15px;
+  color: rgb(41, 41, 41);
+}
+.product-container > h3 {
+  font-size: 30px;
+  color: #864e4e;
+}
+
+.description-container {
+  width: 50%;
+  display: flex;
+  justify-items: center;
+  background-color: black;
+  height: 100%;
+}
+
+.description-container > div {
+  width: 50%;
+  margin: auto;
+}
+
+.quality {
+  text-transform: uppercase;
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: white;
+}
+.quality > span {
+  color: #864e4e;
+}
+
+.quality-description {
+  color: #bebebe;
+}
+
+button {
+  color: white;
+  background-color: #864e4e;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+.armchair {
+  position: absolute;
+  right: 55%;
+  bottom: 0;
+  height: 45%;
+  transform: translate(50%, 0%);
+}
+
+.second-product {
+  overflow: hidden;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(to right, #ededed, #b6aaaa);
+}
+.couch {
+  width: 50%;
+}
+
+.couch-div {
+  margin: auto;
+  width: 75%;
+}
+.couch-div > h1 {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.couch-div > p {
+  color: #313131;
+}
+.couch-img {
+  height: 45%;
+  position: absolute;
+  top: 50%;
+  right: -15%;
+  transform: translate(0%, -50%);
+}
+
+footer {
+  background-color: #4e3c3c;
+  color: white;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 10vh;
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-around;
+  width: 25%;
+}
+
+.social-links > img {
+  height: 20px;
+}

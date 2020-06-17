@@ -1,0 +1,53 @@
+.contact {
+  height: 100vh;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.contact-text {
+  margin-top: 10%;
+}
+
+.contact-text h2 {
+  text-transform: uppercase;
+  line-height: 3;
+  font-size: 40px;
+}
+.contact-text p {
+  color: rgb(70, 70, 70);
+}
+
+span {
+  color: #7c3636;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  box-shadow: 5px 8px 20px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 80px;
+}
+
+form input {
+  display: block;
+  border: none;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 15px 20px;
+  outline: none;
+  margin-bottom: 20px;
+  font-family: inherit;
+  font-size: 18px;
+  color: rgb(70, 70, 70);
+}
+
+textarea {
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  font-size: 18px;
+}
