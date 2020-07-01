@@ -16,6 +16,12 @@ nav {
   z-index: 10;
   width: 100%;
 }
+.burger {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  right: -50px;
+}
 
 .logo a {
   display: flex;
@@ -197,4 +203,125 @@ footer {
 
 .social-links > img {
   height: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  nav ul {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .intro-main {
+    font-size: 30px;
+  }
+  .intro-sub {
+    font-size: 15px;
+  }
+  .armchair {
+    height: 35%;
+  }
+  .couch-img {
+    height: 35%;
+  }
+  .social-links {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .logo a img {
+    height: 35px;
+  }
+  ul > li > a {
+    font-size: 12px;
+  }
+  nav ul {
+    width: 48%;
+  }
+  #intro-page {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .intro-text {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .clock {
+    height: 25%;
+  }
+  .first-product {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .product-container {
+    margin-top: 50px;
+    margin-bottom: 12rem;
+    line-height: 1.5;
+    width: 90%;
+  }
+  .product-container h2 {
+    font-size: 20px;
+  }
+  .product-container h4 {
+    font-size: 12px;
+  }
+  .product-container h3 {
+    font-size: 20px;
+  }
+
+  .second-product {
+    flex-direction: column;
+  }
+  .description-container {
+    width: 100%;
+    text-align: center;
+    padding: 50px 0px;
+  }
+  .description-container > div {
+    width: 90%;
+  }
+  .quality {
+    font-size: 20px;
+  }
+  .armchair {
+    height: 25%;
+    position: absolute;
+    left: 45%;
+    bottom: 44%;
+    transform: translate(-45%, -25%);
+    margin-top: 30px;
+  }
+  .couch {
+    width: 90%;
+    text-align: center;
+    margin: 50px 0px;
+  }
+  .couch-div {
+    width: 100%;
+  }
+  .couch-img {
+    height: 20%;
+    transform: none;
+    right: unset;
+    top: unset;
+    position: static;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  ul {
+    visibility: hidden;
+  }
+  .burger {
+    visibility: visible;
+    position: static;
+    display: block;
+  }
+  .intro-text {
+    margin-bottom: 70px;
+  }
+  .social-links {
+    width: 40%;
+  }
 }
