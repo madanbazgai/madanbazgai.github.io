@@ -81,7 +81,6 @@ textarea {
   }
   .contact-text {
     margin-top: 20px;
-    margin-bottom: 20px;
   }
   .contact-text h2 {
     font-size: 25px;
@@ -102,6 +101,5 @@ textarea {
   .burger {
     display: block;
     visibility: visible;
-    position: static;
   }
 }

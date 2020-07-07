@@ -97,6 +97,5 @@
   .burger {
     display: block;
     visibility: visible;
-    position: static;
   }
 }
