@@ -301,6 +301,7 @@ footer {
     width: 100%;
   }
   .couch-img {
+    margin-top: 50px;
     height: 20%;
     transform: none;
     right: unset;
