@@ -311,7 +311,7 @@ footer {
 
 @media screen and (max-width: 400px) {
   .logo {
-    height: 15vh;
+    height: 10vh;
   }
   .logo a {
     height: 75%;
