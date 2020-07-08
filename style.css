@@ -193,8 +193,6 @@ footer {
   align-items: center;
   justify-content: space-around;
   height: 10vh;
-  position: fixed;
-  width: 100%;
 }
 
 .social-links {
