@@ -236,6 +236,9 @@ footer {
   ul > li > a {
     font-size: 12px;
   }
+  nav {
+    height: 55px;
+  }
   nav ul {
     width: 48%;
   }
