@@ -1,14 +1,47 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="MadMax" />
+    <meta name="apple-mobile-web-app-title" content="MadMax" />
+    <meta name="theme-color" content="#000" />
+    <meta name="msapplication-navbutton-color" content="#000" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="msapplication-starturl" content="/index.html" />
+
+    <link rel="apple-touch-icon" href="assets/apple-icon-180.png" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="My personal portfolio website and blog page"
+    />
+    <meta name="author" content="Madan Bajgai" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="preload"
+      href="/assets/woff.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <title>Madan Bazgai</title>
   </head>
   <style>
     @font-face {
       font-family: "Nothing";
-      src: url("./woff.woff2") format("woff2");
+      src: local("Nothing"), local("Nothing"),
+        url(./assets/woff.woff2) format("woff2");
+      font-display: swap;
     }
     * {
       margin: 0;
@@ -16,20 +49,46 @@
       box-sizing: border-box;
       background-color: black;
       color: white;
-      font-family: Nothing;
+      font-family: Nothing, sans-serif;
       font-weight: bold;
       font-size: 5vw;
     }
-    div {
+    .page {
       display: flex;
-      height: 100vh;
       justify-content: center;
+      height: 100vh;
       align-items: center;
     }
   </style>
   <body>
-    <div>
+    <div class="page">
       <h1>PAGE UNDER CONSTRUCTION...</h1>
     </div>
+
+    <script>
+      if (navigator && navigator.serviceWorker) {
+        navigator.serviceWorker.register("sw.js");
+      }
+
+      const body = document.querySelector("body");
+
+      window.addEventListener("beforeinstallprompt", (e) => {
+        console.log("hello world");
+        // e.preventDefault();
+        deferredPrompt = e;
+
+        body.addEventListener("click", (e) => {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === "accepted") {
+              console.log("User accepted the A2HS prompt");
+            } else {
+              console.log("User dismissed the A2HS prompt");
+            }
+            deferredPrompt = null;
+          });
+        });
+      });
+    </script>
   </body>
 </html>
