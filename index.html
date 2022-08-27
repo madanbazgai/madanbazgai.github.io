@@ -39,9 +39,7 @@
   <style>
     @font-face {
       font-family: "Nothing";
-      src: local("Nothing"), local("Nothing"),
-        url(./assets/woff.woff2) format("woff2");
-      font-display: swap;
+      src: url("./assets/woff.woff2") format("woff2");
     }
     * {
       margin: 0;
@@ -73,7 +71,6 @@
       const body = document.querySelector("body");
 
       window.addEventListener("beforeinstallprompt", (e) => {
-        console.log("hello world");
         // e.preventDefault();
         deferredPrompt = e;
 

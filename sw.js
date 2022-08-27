@@ -1,15 +1,13 @@
 const OFFLINE_VERSION = 1;
 const CACHE_NAME = "offline";
-const OFFLINE_URL = ["index.html", "/assets/woff.woff2", "/assets/favicon.ico"];
+const assets = ["/", "index.html", "assets/woff.woff2", "assets/favicon.ico"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
-    //caching static assets
     caches.open(CACHE_NAME).then((cache) => {
-      cache.addAll(OFFLINE_URL);
+      cache.addAll(assets);
     })
   );
-  // Force the waiting service worker to become the active service worker.
   self.skipWaiting();
 });
 
@@ -26,25 +24,20 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  if (event.request.mode === "navigate") {
+  event.respondWith(
     event.respondWith(
-      (async () => {
-        try {
-          const preloadResponse = await event.preloadResponse;
-          if (preloadResponse) {
-            return preloadResponse;
-          }
-
-          const networkResponse = await fetch(event.request);
-          return networkResponse;
-        } catch (error) {
-          console.log("Fetch failed; returning offline page instead.", error);
-
-          const cache = await caches.open(CACHE_NAME);
-          const cachedResponse = await cache.match(OFFLINE_URL);
-          return cachedResponse;
+      caches.match(event.request).then(function (response) {
+        if (response) {
+          return response;
+        } else {
+          return fetch(event.request).then(function (res) {
+            return caches.open("dynamic").then(function (cache) {
+              cache.put(event.request.url, res.clone());
+              return res;
+            });
+          });
         }
-      })()
-    );
-  }
+      })
+    )
+  );
 });
