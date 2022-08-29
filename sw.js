@@ -1,6 +1,6 @@
-const OFFLINE_VERSION = 1;
+const OFFLINE_VERSION = 4;
 const CACHE_NAME = "offline";
-const assets = ["/", "index.html", "assets/woff.woff2", "assets/favicon.ico"];
+const assets = ["index.html", "/fonts/madmax.woff2", "assets/favicon.ico"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
@@ -25,19 +25,17 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    event.respondWith(
-      caches.match(event.request).then(function (response) {
-        if (response) {
-          return response;
-        } else {
-          return fetch(event.request).then(function (res) {
-            return caches.open("dynamic").then(function (cache) {
-              cache.put(event.request.url, res.clone());
-              return res;
-            });
+    caches.match(event.request).then(function (response) {
+      if (response) {
+        return response;
+      } else {
+        return fetch(event.request).then(function (res) {
+          return caches.open("dynamic").then(function (cache) {
+            cache.put(event.request.url, res.clone());
+            return res;
           });
-        }
-      })
-    )
+        });
+      }
+    })
   );
 });
