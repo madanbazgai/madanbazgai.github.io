@@ -1,7 +1,7 @@
 {
-  "name": "HugoX",
-  "short_name": "HugoX",
-  "description": "My personal blog app",
+  "name": "Madan Bazgai",
+  "short_name": "Madan Bazgai",
+  "description": "My personal portfolio & blog app",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
