@@ -1,0 +1,138 @@
+baseURL: http://madanbajgai.com.np/
+languageCode: en-us
+title: Madan Bazgai
+theme: PaperMod
+paginate: 5
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+googleAnalytics: jDp5imGZh3KQWDa2O3vpUK4o-mDO6hSuCXTa8ALjXYM
+
+minify:
+  disableXML: false
+  minifyOutput: true
+
+menu:
+  main:
+    - identifier: search
+      name: Search
+      url: /search
+      weight: 20
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      weight: 10
+    - identifier: Posts
+      name: Posts
+      url: /posts
+      weight: 5
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 15
+    - identifier: projects
+      name: Projects
+      url: https://github.com/madanbajgai
+      weight: 2
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+params:
+  env: production
+  description: "This is a portfolio and blog site created, designed & developed by Madan Bazgai"
+  keywords: [Blog, Portfolio, Madan Bazgai, Madan Bajgai, MadMax]
+  author: Author - Madan Bazgai
+  images: ["<link or path of image for opengraph, twitter-cards>"]
+  cover:
+    hidden: false
+    linkFullImages: true
+  defaultTheme: dark
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  comments: false #add disqus
+  profileMode:
+    enabled: true
+    title: Madan Bazgai # optional default will be site title
+    subtitle: 💻Software Engineer | 👨‍💻Developer
+    imageUrl: madmax.jpg
+    imageTitle: profile picture
+    imageWidth: 120 # custom size
+    imageHeight: 120 # custom size
+    buttons:
+      - name: Posts
+        url: "/posts"
+      - name: Github
+        url: "https://github.com/madanbajgai"
+      # - name: Resume
+      #   url: ""
+
+  socialIcons: # optional
+    - name: email
+      url: "mailto:madanbajgai@gmail.com"
+    - name: phone
+      url: "977-980-451-6288"
+    - name: whatsapp
+      url: "https://wa.me/9779804516288"
+    - name: twitter
+      url: "madanbajgai@gmail.com"
+    - name: instagram
+      url: "https://www.instagram.com/mad_madan/"
+    - name: facebook
+      url: "https://fb.com/madan.bajgai"
+    # - name: medium
+    #   url: "madanbajgai@gmail.com"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/madan-bajgai/"
+    # - name: dev
+    #   url: ""
+    # - name: youtube
+    #   url: ""
+
+  editPost:
+    URL: "https://github.com/<path_to_repo>/content"
+    Text: "Suggest Changes" # edit text
+
+  assets:
+    # disableHLJS: true
+    favicon: "favicon.ico"
+    favicon16x16: "favicon.ico"
+    favicon32x32: "favicon.ico"
+    apple_touch_icon: "icons/icon-192x192.png"
+    safari_pinned_tab: "icons/icon-192x192.png"
+
+  label:
+    text: "Madan Bazgai"
+    icon: icons/icon-192x192.png
+    iconHeight: 35
+
+markup:
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: false
+    hl_Lines: ""
+    hl_inline: false
+    lineAnchors: ""
+    lineNoStart: 1
+    lineNos: false
+    lineNumbersInTable: true
+    noClasses: true
+    noHl: false
+    style: monokai
+    tabWidth: 4
+
+  analytics:
+    google:
+      SiteVerificationTag: "jDp5imGZh3KQWDa2O3vpUK4o-mDO6hSuCXTa8ALjXYM"
+    bing:
+      SiteVerificationTag: "XYZabc"
+    yandex:
+      SiteVerificationTag: "XYZabc"

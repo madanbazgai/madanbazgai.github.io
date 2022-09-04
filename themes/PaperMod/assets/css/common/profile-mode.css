@@ -1,0 +1,98 @@
+.buttons,
+.main .profile {
+  display: flex;
+  justify-content: center;
+}
+
+.main .profile {
+  align-items: center;
+  flex-direction: column;
+  min-height: calc(
+    90vh - var(--header-height) - var(--footer-height) - (var(--gap) * 2)
+  );
+  text-align: center;
+}
+
+.profile .profile_inner h1 {
+  font-weight: bold;
+  padding: 12px 0;
+  -webkit-animation: glow 1300ms ease-in-out infinite alternate;
+  -moz-animation: glow 1300ms ease-in-out infinite alternate;
+  animation: glow 4000ms ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 0px #fff, 0 0 0px #fff, 0 0 0px #a1a1a1, 0 0 0px #a1a1a1,
+      0 0 0px #a1a1a1, 0 0 0px #a1a1a1, 0 0 0px #a1a1a1;
+  }
+  to {
+    text-shadow: 0 0 2px #fff, 0 0 2px #a1a1a1, 0 0 2px #a1a1a1, 0 0 2px #a1a1a1,
+      0 0 2px #a1a1a1, 0 0 2px #a1a1a1, 0 0 2px #a1a1a1;
+  }
+}
+.profile img {
+  display: inline-table;
+  border-radius: 3%;
+}
+
+.buttons {
+  flex-wrap: wrap;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.button {
+  background: var(--tertiary);
+  border-radius: var(--radius);
+  margin: 8px;
+  padding: 6px;
+  transition: transform 0.1s;
+  animation: glowing 4000ms infinite;
+}
+@keyframes glowing {
+  0% {
+    background-color: #1b7001;
+    box-shadow: 0 0 3px hsl(106, 94%, 37%);
+  }
+  50% {
+    background-color: #36ad11;
+    box-shadow: 0 0 10px #3aca0e;
+  }
+  100% {
+    background-color: #1a6e00;
+    box-shadow: 0 0 3px hsl(106, 94%, 37%);
+  }
+}
+.button-inner {
+  padding: 0 8px;
+  color: white;
+}
+
+.button:active {
+  transform: scale(0.96);
+}
+
+.github-icon {
+  display: inline;
+  padding-top: 6px;
+}
+
+@media only screen and (min-width: 725px) {
+  .main .profile {
+    min-height: calc(
+      100vh - var(--header-height) - var(--footer-height) - (var(--gap) * 2)
+    );
+    margin-top: 80px;
+  }
+}
+
+.pinned-article {
+  margin-top: 30px;
+  text-align: left;
+  width: 300px;
+  font-size: 1rem;
+}
+
+.pinned-article time {
+  font-size: 0.7rem;
+}
