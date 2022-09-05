@@ -29,32 +29,32 @@ self.addEventListener("install", (e) => {
   self.skipWaiting();
 });
 
-// self.addEventListener("activate", (event) => {
-//   event.waitUntil(
-//     (async () => {
-//       if ("navigationPreload" in self.registration) {
-//         await self.registration.navigationPreload.enable();
-//       }
-//     })()
-//   );
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      if ("navigationPreload" in self.registration) {
+        await self.registration.navigationPreload.enable();
+      }
+    })()
+  );
 
-//   self.clients.claim();
-// });
+  self.clients.claim();
+});
 
 // activate event
-self.addEventListener("activate", (evt) => {
-  //console.log('service worker activated');
-  evt.waitUntil(
-    caches.keys().then((keys) => {
-      //console.log(keys);
-      return Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
-      );
-    })
-  );
-});
+// self.addEventListener("activate", (evt) => {
+//   //console.log('service worker activated');
+//   evt.waitUntil(
+//     caches.keys().then((keys) => {
+//       //console.log(keys);
+//       return Promise.all(
+//         keys
+//           .filter((key) => key !== CACHE_NAME)
+//           .map((key) => caches.delete(key))
+//       );
+//     })
+//   );
+// });
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
