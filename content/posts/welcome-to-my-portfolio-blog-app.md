@@ -44,8 +44,6 @@ editPost:
 - You can suggest changes.
 - You can comment to the blog post.
 
-# 💚 THANK YOU 💚
-
 # 😎What did I do?
 
 - I fully designed, customized and developed this app.
@@ -75,3 +73,5 @@ editPost:
 - The screenshot is mentioned above.
 - With lots of efforts, headaches and optimization i was finally able to achieve this score.
 - This may vary depending upon your **browser** and **installed-extensions**.
+
+# 💚 THANK YOU 💚
