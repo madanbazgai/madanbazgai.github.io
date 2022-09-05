@@ -9,6 +9,7 @@ tags: ["first"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
 showToc: true
+TocOpen: true
 description: "Desc Text."
 canonicalURL: "https://canonical.url/to/page"
 ShowReadingTime: true
