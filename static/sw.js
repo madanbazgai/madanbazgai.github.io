@@ -1,6 +1,6 @@
-const OFFLINE_VERSION = 2;
+const OFFLINE_VERSION = 3;
 const CACHE_NAME = "offline";
-const DYNAMIC_CACHE = "dynamic-v2";
+const DYNAMIC_CACHE = "dynamic-v3";
 const assets = ["/", "index.html", "manifest.json", "404.html", "madmax.avif"];
 
 // cache size limit function
