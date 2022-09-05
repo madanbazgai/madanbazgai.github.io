@@ -73,6 +73,6 @@ self.addEventListener("fetch", (event) => {
           });
         }
       })
-      .catch(() => caches.match("404.html"))
+      .catch(() => caches.match("/404.html"))
   );
 });
