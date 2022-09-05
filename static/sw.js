@@ -1,6 +1,6 @@
-const OFFLINE_VERSION = 10;
+const OFFLINE_VERSION = 11;
 const CACHE_NAME = "offline";
-const DYNAMIC_CACHE = "dynamic-v10";
+const DYNAMIC_CACHE = "dynamic-v11";
 const assets = [
   "/",
   "/index.html",
