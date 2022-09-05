@@ -110,8 +110,8 @@ params:
 
   label:
     text: "Madan Bazgai"
-    icon: icons/icon-192x192.png
-    iconHeight: 35
+    # icon: icons/icon-192x192.png
+    # iconHeight: 35
 
 markup:
   highlight:

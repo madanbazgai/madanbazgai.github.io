@@ -1,11 +1,11 @@
-const OFFLINE_VERSION = 1;
+const OFFLINE_VERSION = 2;
 const CACHE_NAME = "offline";
 const assets = [
   "/",
-  "/manifest.json",
-  "/style.css",
   "/index.html",
+  "/manifest.json",
   "/404.html",
+  "/madmax.jpg",
 ];
 
 self.addEventListener("install", (e) => {
