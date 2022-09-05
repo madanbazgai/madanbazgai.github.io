@@ -1,4 +1,4 @@
-const OFFLINE_VERSION = 2;
+const OFFLINE_VERSION = 3;
 const CACHE_NAME = "offline";
 const assets = [
   "/",
