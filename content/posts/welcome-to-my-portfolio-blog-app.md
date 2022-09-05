@@ -36,6 +36,16 @@ editPost:
 - It is based on my **original idea**, inspired by some **open-source techs**, not copied from someones projects, neither it's Wordpress/Wix's 5 minutes knock-off.
 - This app is powered by the technologies such as [Hugo](https://gohugo.io/), PWA etc.
 
+# ✉️ What can you do here?.
+
+- Well the first thing you can do is **install** this app, **by clicking** on my **name** on the **top of the page**.
+- Follow me on github and other social-platform.
+- You can read articles.
+- You can suggest changes.
+- You can comment to the blog post.
+
+# 💚 THANK YOU 💚
+
 # 😎What did I do?
 
 - I fully designed, customized and developed this app.
@@ -65,13 +75,3 @@ editPost:
 - The screenshot is mentioned above.
 - With lots of efforts, headaches and optimization i was finally able to achieve this score.
 - This may vary depending upon your **browser** and **installed-extensions**.
-
-# ✉️ What is it for you?.
-
-- Well the first thing you can do is **install** this app, **by clicking** on my **name** on the **top of the page**.
-- Follow me on github and other social-platform.
-- You can read articles.
-- You can suggest changes.
-- You can comment to the blog post.
-
-# 💚 THANK YOU 💚
