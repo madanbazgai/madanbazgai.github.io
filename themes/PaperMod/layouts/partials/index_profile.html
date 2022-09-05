@@ -69,9 +69,11 @@
     <div class="pinned-article" >
         <p>Pinned Articles</p>
         {{ $taggedPages :=  .Site.Taxonomies.tags.pinned.Pages }}
+       <ul>
         {{ range $taggedPages }}
-          <li><a style="border-bottom: 1px solid rgb(94, 231, 30);" href="{{ .RelPermalink }}"> {{ .Title }}</a>   &ndash;    <time  datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006 Jan 02" }}</time>  </li>
-        {{ end }}
+        <li><a style="border-bottom: 1px solid rgb(94, 231, 30);" href="{{ .RelPermalink }}"> {{ .Title }}</a>   &ndash;    <time  datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006 Jan 02" }}</time>  </li>
+      {{ end }}
+       </ul>
     </div>
     
 </div>
