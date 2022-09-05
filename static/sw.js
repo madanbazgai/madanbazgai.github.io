@@ -1,13 +1,7 @@
-const OFFLINE_VERSION = 11;
+const OFFLINE_VERSION = 2;
 const CACHE_NAME = "offline";
-const DYNAMIC_CACHE = "dynamic-v11";
-const assets = [
-  "/",
-  "/index.html",
-  "/manifest.json",
-  "/404.html",
-  "/madmax.avif",
-];
+const DYNAMIC_CACHE = "dynamic-v2";
+const assets = ["/", "index.html", "manifest.json", "404.html", "madmax.avif"];
 
 // cache size limit function
 const limitCacheSize = (name, size) => {
@@ -67,12 +61,12 @@ self.addEventListener("fetch", (event) => {
           return fetch(event.request).then(function (res) {
             return caches.open(DYNAMIC_CACHE).then(function (cache) {
               cache.put(event.request.url, res.clone());
-              // limitCacheSize(DYNAMIC_CACHE, 15);
+              limitCacheSize(DYNAMIC_CACHE, 15);
               return res;
             });
           });
         }
       })
-      .catch(() => caches.match("/404.html"))
+      .catch(() => caches.match("404.html"))
   );
 });
