@@ -18,11 +18,11 @@
     </div>
     {{- end }}
   </header>
-  {{- $isHidden := .Params.cover.hidden | default
-  site.Params.cover.hiddenInSingle | default site.Params.cover.hidden }} {{-
-  partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden) }} {{-
-  partial "toc.html" . }} {{- if (.Param "ShowToc") }} {{- end }} {{- if
-  .Content }}
+  <!-- {{- $isHidden := .Params.cover.hidden | default
+  site.Params.cover.hiddenInSingle | default site.Params.cover.hidden }} 
+  {{- partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden) }}  -->
+  {{- partial "toc.html" . }} {{- if (.Param "ShowToc") }} {{- end }} {{-
+  if.Content }}
   <div class="post-content">
     {{- if not (.Param "disableAnchoredHeadings") }} {{- partial
     "anchored_headings.html" .Content -}} {{- else }}{{ .Content }}{{ end }}

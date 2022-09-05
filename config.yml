@@ -53,11 +53,11 @@ params:
   cover:
     hidden: false
     linkFullImages: true
-  defaultTheme: dark
+  # defaultTheme: dark
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowCodeCopyButtons: true
-  comments: false #add disqus
+  comments: true
   profileMode:
     enabled: true
     title: Madan Bazgai # optional default will be site title
@@ -77,16 +77,16 @@ params:
   socialIcons: # optional
     - name: email
       url: "mailto:madanbajgai@gmail.com"
-    - name: phone
-      url: "977-980-451-6288"
+    # - name: phone
+    #   url: tel:977-980-451-6288
     - name: whatsapp
       url: "https://wa.me/9779804516288"
     - name: twitter
-      url: "madanbajgai@gmail.com"
+      url: "twitter.com"
     - name: instagram
       url: "https://www.instagram.com/mad_madan/"
     - name: facebook
-      url: "https://fb.com/madan.bajgai"
+      url: "https://facebook.com/madan.bajgai"
     # - name: medium
     #   url: "madanbajgai@gmail.com"
     - name: linkedin
@@ -101,7 +101,6 @@ params:
     Text: "Suggest Changes" # edit text
 
   assets:
-    # disableHLJS: true
     favicon: "favicon.ico"
     favicon16x16: "favicon.ico"
     favicon32x32: "favicon.ico"
@@ -112,22 +111,6 @@ params:
     text: "Madan Bazgai"
     # icon: icons/icon-192x192.png
     # iconHeight: 35
-
-markup:
-  highlight:
-    anchorLineNos: false
-    codeFences: true
-    guessSyntax: false
-    hl_Lines: ""
-    hl_inline: false
-    lineAnchors: ""
-    lineNoStart: 1
-    lineNos: false
-    lineNumbersInTable: true
-    noClasses: true
-    noHl: false
-    style: monokai
-    tabWidth: 4
 
   analytics:
     google:
