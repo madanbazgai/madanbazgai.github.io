@@ -1,6 +1,6 @@
-const OFFLINE_VERSION = 5;
+const OFFLINE_VERSION = 1;
 const CACHE_NAME = "offline";
-const DYNAMIC_CACHE = "dynamic-v5";
+const DYNAMIC_CACHE = "dynamic-v1";
 const assets = ["/", "index.html", "manifest.json", "404.html", "madmax.avif"];
 
 // cache size limit function
@@ -61,7 +61,7 @@ self.addEventListener("fetch", (event) => {
           return fetch(event.request).then(function (res) {
             return caches.open(DYNAMIC_CACHE).then(function (cache) {
               cache.put(event.request.url, res.clone());
-              limitCacheSize(DYNAMIC_CACHE, 15);
+              limitCacheSize(DYNAMIC_CACHE, 10);
               return res;
             });
           });
@@ -70,3 +70,39 @@ self.addEventListener("fetch", (event) => {
       .catch(() => caches.match("404.html"))
   );
 });
+
+// self.addEventListener("fetch", function (event) {
+//   var url = "https://localhost:1313";
+
+//   if (event.request.url.indexOf(url) > -1) {
+//     event.respondWith(
+//       caches.open(DYNAMIC_CACHE).then(function (cache) {
+//         return fetch(event.request).then(function (res) {
+//           cache.put(event.request, res.clone());
+//           return res;
+//         });
+//       })
+//     );
+//   } else {
+//     event.respondWith(
+//       caches.match(event.request).then(function (response) {
+//         if (response) {
+//           return response;
+//         } else {
+//           return fetch(event.request)
+//             .then(function (res) {
+//               return caches.open(DYNAMIC_CACHE).then(function (cache) {
+//                 cache.put(event.request.url, res.clone());
+//                 return res;
+//               });
+//             })
+//             .catch(function (err) {
+//               return caches.open(CACHE_NAME).then(function (cache) {
+//                 return cache.match("404");
+//               });
+//             });
+//         }
+//       })
+//     );
+//   }
+// });

@@ -33,9 +33,16 @@ editPost:
 # 🤔What is it about?
 
 - This is my personal Portfolio/Blog app.
+- It is based on my **original idea**, inspired by some **open-source techs**.
 - **Contents** are 100% original.
-- It is based on my **original idea**, inspired by some **open-source techs**, not copied from someones projects, neither it's Wordpress/Wix's 5 minutes knock-off.
 - This app is powered by the technologies such as [Hugo](https://gohugo.io/), PWA etc.
+
+# 💚100% LightHouse Score? Hell Yeah💪
+
+- On ideal condition.
+- The screenshot is mentioned above.
+- With lots of efforts, headaches and optimization i was finally able to achieve this score.
+- This may vary depending upon your **browser** and **installed-extensions**.
 
 # ✉️ What can you do here?.
 
@@ -67,12 +74,5 @@ editPost:
 - It is a way of turning the existing **web-apps** into **native-like app** with some native capabilities.
 - The app can be installed on both **Smartphone** and **Desktop**.
 - The app can work **Offline** and the users donot have to update app. (They are automatically updated on refresh)
-
-# 💚100% LightHouse Score? Hell Yeah💪
-
-- On ideal condition.
-- The screenshot is mentioned above.
-- With lots of efforts, headaches and optimization i was finally able to achieve this score.
-- This may vary depending upon your **browser** and **installed-extensions**.
 
 # 💚 THANK YOU 💚
