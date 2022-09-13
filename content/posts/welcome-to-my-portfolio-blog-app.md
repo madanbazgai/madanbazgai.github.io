@@ -75,4 +75,7 @@ editPost:
 - The app can be installed on both **Smartphone** and **Desktop**.
 - The app can work **Offline** and the users donot have to update app. (They are automatically updated on refresh)
 
+# Features of the App
+
+# Shortcuts of the App
 # 💚 THANK YOU 💚
