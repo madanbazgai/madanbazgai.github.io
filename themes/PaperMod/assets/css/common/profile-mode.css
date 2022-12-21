@@ -16,11 +16,11 @@
 .profile .profile_inner h1 {
   font-weight: bold;
   padding: 12px 0;
-  -webkit-animation: glow 1300ms ease-in-out infinite alternate;
+  /* -webkit-animation: glow 1300ms ease-in-out infinite alternate;
   -moz-animation: glow 1300ms ease-in-out infinite alternate;
-  animation: glow 4000ms ease-in-out infinite alternate;
+  animation: glow 4000ms ease-in-out infinite alternate; */
 }
-@keyframes glow {
+/* @keyframes glow {
   from {
     text-shadow: 0 0 0px #fff, 0 0 0px #fff, 0 0 0px #a1a1a1, 0 0 0px #a1a1a1,
       0 0 0px #a1a1a1, 0 0 0px #a1a1a1, 0 0 0px #a1a1a1;
@@ -29,7 +29,7 @@
     text-shadow: 0 0 2px #fff, 0 0 2px #a1a1a1, 0 0 2px #a1a1a1, 0 0 2px #a1a1a1,
       0 0 2px #a1a1a1, 0 0 2px #a1a1a1, 0 0 2px #a1a1a1;
   }
-}
+} */
 .profile img {
   display: inline-table;
   border-radius: 3%;
