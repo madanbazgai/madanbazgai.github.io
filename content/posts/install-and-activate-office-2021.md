@@ -17,7 +17,7 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowWordCount: true
 cover:
-  image: "/madmax.avif" # image path/url
+  image: "/images/blogicon/microsoft-office.avif" # image path/url
   alt: "blog image" # alt text
   caption: "<blog image>" # display caption under cover
   relative: false # when using page bundles set this to true
