@@ -8,7 +8,7 @@ categories: ["Windows"]
 tags: ["Windows", "Installation"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
-showToc: true
+showToc: false
 TocOpen: true
 description: "Desc Text."
 canonicalURL: "https://canonical.url/to/page"
@@ -33,4 +33,4 @@ editPost:
 3. Download this activation script from [Here](/activate.zip).
 4. Run the script as Administrator.
 
-### 💚 THANK YOU 💚
+💚 THANK YOU 💚
