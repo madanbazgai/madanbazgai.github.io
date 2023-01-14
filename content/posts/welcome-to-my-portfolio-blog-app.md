@@ -9,7 +9,7 @@ tags: ["pinned"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
 showToc: true
-TocOpen: true
+TocOpen: false
 # description: ""
 # canonicalURL: "https://canonical.url/to/page"
 ShowReadingTime: true
@@ -33,15 +33,11 @@ editPost:
 # 🤔What is it about?
 
 - This is my personal Portfolio/Blog app.
-- It is based on my **original idea**, inspired by some **open-source techs**.
-- **Contents** are 100% original.
 - This app is powered by the technologies such as [Hugo](https://gohugo.io/), PWA etc.
 
 # 💚100% LightHouse Score? Hell Yeah💪
 
 - On ideal condition.
-- The screenshot is mentioned above.
-- With lots of efforts, headaches and optimization i was finally able to achieve this score.
 - This may vary depending upon your **browser** and **installed-extensions**.
 
 # ✉️ What can you do here?.
@@ -61,7 +57,6 @@ editPost:
   - [x] Installable
   - [x] Offline Capability
   - [x] Search ... and so much more
-- This app took lots of time specially for optimizations.
 
 # 👉What the hell is Hugo?
 
@@ -75,7 +70,4 @@ editPost:
 - The app can be installed on both **Smartphone** and **Desktop**.
 - The app can work **Offline** and the users donot have to update app. (They are automatically updated on refresh)
 
-# Features of the App
-
-# Shortcuts of the App
 # 💚 THANK YOU 💚
