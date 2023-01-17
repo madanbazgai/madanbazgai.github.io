@@ -36,7 +36,7 @@ editPost:
 2. Output 1
 ![](/images/photoshop/task1/ppsize.png)
 
-3. Output 1
+3. Output 2
 ![](/images/photoshop/task1/print.png)
 
 ## Procedure
