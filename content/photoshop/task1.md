@@ -31,13 +31,13 @@ editPost:
 # Project 1: Create PP size photo
 
 1. Sample
-![](/static/images/photoshop/task1/man.jpg)
+![](/images/photoshop/task1/man.jpg)
 
 2. Output 1
-![](/static/images/photoshop/task1/ppsize.png)
+![](/images/photoshop/task1/ppsize.png)
 
 3. Output 1
-![](/static/images/photoshop/task1/print.png)
+![](/images/photoshop/task1/print.png)
 
 ## Procedure
 
