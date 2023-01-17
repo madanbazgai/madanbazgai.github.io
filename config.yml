@@ -37,6 +37,10 @@ menu:
       name: Projects
       url: https://github.com/madanbajgai
       weight: 2
+    - identifier: photoshop
+      name: Photoshop
+      url: /photoshop
+      weight: 0
 
 outputs:
   home:
