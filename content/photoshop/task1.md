@@ -17,7 +17,7 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowWordCount: true
 cover:
-    image: "/madmax.avif" # image path/url
+    image: "/images/photoshop/task1/ppsize.png" # image path/url
     alt: "blog image" # alt text
     caption: "<blog image>" # display caption under cover
     relative: false # when using page bundles set this to true
@@ -46,7 +46,7 @@ editPost:
 2. Goto property tab and select remove background
 3. Goto the half circle icon on the bottom and select solid color and make it white
 4. Move that white colored layer to bottom
-5. Combine those layers [shift + click ] or alt+ctrl+A
+5. Combine those layers [shift + click ] or alt+ctrl+A  then ctrl+E
 6. Create a new sheet of 35mmX45mm & 300 res
 7. Bring the half photo to this sheet and transform according to size
 8. Save with png format
