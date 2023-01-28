@@ -7,55 +7,57 @@
 const CACHE_NAME = "my-cache-name";
 const urlsToCache = [
   "/",
-  "/404.html", // custom 404 page
+  "/404.html",
   "index.html",
   "manifest.json",
   "madmax.avif",
 ];
 
-// Listen for the 'install' event
+// Add event listener for 'install' event
 self.addEventListener("install", (event) => {
-  // Open the cache and add all URLs to it
+  // Wait until the cache is created
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
+      // Add all URLs to cache
       return cache.addAll(urlsToCache);
     })
   );
 });
 
-// Listen for the 'fetch' event
+// Add event listener for 'fetch' event
 self.addEventListener("fetch", (event) => {
-  // Check if the browser is offline
-  if (!navigator.onLine) {
-    // Redirect the user to the custom 404 page
-    event.respondWith(caches.match("/404.html"));
-  } else {
-    // Check if the request is already in the cache
-    event.respondWith(
-      caches.match(event.request).then((response) => {
+  event.respondWith(
+    caches
+      .match(event.request)
+      .then((response) => {
+        // If the request is already in cache, return it
         if (response) {
-          // If the request is in the cache, return it
           return response;
         }
-        // If the request is not in the cache, fetch it and add it to the cache
-        return fetch(event.request)
-          .then((response) => {
+        // Otherwise, fetch the request and add it to cache
+        else {
+          // Clone request stream
+          var fetchRequest = event.request.clone();
+
+          return fetch(fetchRequest).then((response) => {
+            // If the response is not valid, return 404 page
             if (!response || response.status !== 200) {
-              // If the response is not valid, redirect to the custom 404 page
               return caches.match("/404.html");
             }
-            // If the response is valid, clone it and add it to the cache
-            var responseToCache = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseToCache);
-            });
-            return response;
-          })
-          .catch(() => {
-            // If the request fails, redirect to the custom 404 page
-            return caches.match("/404.html");
+            // Otherwise, clone response stream and add it to cache
+            else {
+              var responseToCache = response.clone();
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(event.request, responseToCache);
+              });
+              return response;
+            }
           });
+        }
       })
-    );
-  }
+      // If there is an error, return 404 page
+      .catch(() => {
+        return caches.match("/404.html");
+      })
+  );
 });
