@@ -1,16 +1,8 @@
-//the original sw.js is based on cache first strategy and this implementation is based on stale while strategy
-
-
 const CACHE_NAME = "static-v2";
 const DYNAMIC_CACHE = "dynamic-v2";
 const assets = ["/", "index.html", "manifest.json", "404.html", "madmax.avif"];
 const dynamicCacheLimit = 20;
 
-/**
- * Delete the oldest item in the cache, based on the 'date' header
- * @param {string} name - The name of the cache to limit
- * @param {number} maxItems - The maximum number of items to allow in the cache
- */
 const limitCacheSize = async (name, maxItems) => {
   try {
     const cache = await caches.open(name);
@@ -29,19 +21,18 @@ const limitCacheSize = async (name, maxItems) => {
   }
 };
 
-/**
- * Return the cached response if it exists, otherwise fetch and cache the response
- * @param {Request} request 
- */
-const staleWhileRevalidate = async (request) => {
+const cacheFirstStrategy = async (request) => {
   try {
     const response = await caches.match(request);
     if (response) {
       return response;
     }
-
     const res = await fetch(request);
-
+    if (res.status === 301) {
+      const cache = await caches.open(DYNAMIC_CACHE);
+      await cache.put(request, res.clone());
+      return res;
+    }
     const cache = await caches.open(DYNAMIC_CACHE);
     await cache.put(request, res.clone());
     return res;
@@ -76,7 +67,7 @@ self.addEventListener("activate", async (event) => {
 });
 
 self.addEventListener("fetch", async (event) => {
-  event.respondWith(staleWhileRevalidate(event.request));
+  event.respondWith(cacheFirstStrategy(event.request));
 });
 
 setInterval(() => limitCacheSize(DYNAMIC_CACHE, dynamicCacheLimit), 300000);
