@@ -1,108 +1,73 @@
-const OFFLINE_VERSION = 1;
-const CACHE_NAME = "offline";
+const CACHE_NAME = "static-v1";
 const DYNAMIC_CACHE = "dynamic-v1";
 const assets = ["/", "index.html", "manifest.json", "404.html", "madmax.avif"];
+const dynamicCacheLimit = 20;
 
-// cache size limit function
-const limitCacheSize = (name, size) => {
-  caches.open(name).then((cache) => {
-    cache.keys().then((keys) => {
-      if (keys.length > size) {
-        cache.delete(keys[0]).then(limitCacheSize(name, size));
-      }
-    });
-  });
+const limitCacheSize = async (name, maxItems) => {
+  try {
+    const cache = await caches.open(name);
+    const keys = await cache.keys();
+    if (keys.length > maxItems) {
+      const oldestKey = keys.sort((a, b) => {
+        const dateA = new Date(a.headers.get("date")) || new Date();
+        const dateB = new Date(b.headers.get("date")) || new Date();
+        return dateA - dateB;
+      })[0];
+      await cache.delete(oldestKey);
+      console.log(`Oldest item removed: ${oldestKey.url}`);
+    }
+  } catch (err) {
+    console.log(`Error deleting oldest item: ${err}`);
+  }
 };
 
-self.addEventListener("install", (e) => {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      cache.addAll(assets);
-    })
-  );
-  self.skipWaiting();
-});
-
-// self.addEventListener("activate", (event) => {
-//   event.waitUntil(
-//     (async () => {
-//       if ("navigationPreload" in self.registration) {
-//         await self.registration.navigationPreload.enable();
-//       }
-//     })()
-//   );
-
-//   self.clients.claim();
-// });
-
-// activate event
-self.addEventListener("activate", (evt) => {
-  //console.log('service worker activated');
-  evt.waitUntil(
-    caches.keys().then((keys) => {
-      //console.log(keys);
-      return Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
-      );
-    })
+self.addEventListener("install", async (event) => {
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.addAll(assets);
+    })()
   );
 });
 
-self.addEventListener("fetch", (event) => {
+self.addEventListener("activate", async (event) => {
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys();
+      const deletePromises = keys
+        .filter(
+          (key) => key.startsWith("static-") || key.startsWith("dynamic-")
+        )
+        .map((key) => caches.delete(key));
+      await Promise.all(deletePromises);
+    })()
+  );
+});
+
+self.addEventListener("fetch", async (event) => {
   event.respondWith(
-    caches
-      .match(event.request)
-      .then(function (response) {
+    (async () => {
+      try {
+        const response = await caches.match(event.request);
         if (response) {
           return response;
-        } else {
-          return fetch(event.request).then(function (res) {
-            return caches.open(DYNAMIC_CACHE).then(function (cache) {
-              cache.put(event.request.url, res.clone());
-              limitCacheSize(DYNAMIC_CACHE, 10);
-              return res;
-            });
-          });
         }
-      })
-      .catch(() => caches.match("404.html"))
+        const res = await fetch(event.request);
+        if (res.status === 301) {
+          const cache = await caches.open(DYNAMIC_CACHE);
+          await cache.put(event.request, res.clone());
+          return res;
+        }
+        const cache = await caches.open(DYNAMIC_CACHE);
+        await cache.put(event.request, res.clone());
+        return res;
+      } catch (err) {
+        console.log(err);
+        const errorRes = await caches.match("404.html");
+        return errorRes || new Response("error");
+      }
+    })()
   );
 });
 
-// self.addEventListener("fetch", function (event) {
-//   var url = "https://localhost:1313";
-
-//   if (event.request.url.indexOf(url) > -1) {
-//     event.respondWith(
-//       caches.open(DYNAMIC_CACHE).then(function (cache) {
-//         return fetch(event.request).then(function (res) {
-//           cache.put(event.request, res.clone());
-//           return res;
-//         });
-//       })
-//     );
-//   } else {
-//     event.respondWith(
-//       caches.match(event.request).then(function (response) {
-//         if (response) {
-//           return response;
-//         } else {
-//           return fetch(event.request)
-//             .then(function (res) {
-//               return caches.open(DYNAMIC_CACHE).then(function (cache) {
-//                 cache.put(event.request.url, res.clone());
-//                 return res;
-//               });
-//             })
-//             .catch(function (err) {
-//               return caches.open(CACHE_NAME).then(function (cache) {
-//                 return cache.match("404");
-//               });
-//             });
-//         }
-//       })
-//     );
-//   }
-// });
+setInterval(() => limitCacheSize(DYNAMIC_CACHE, dynamicCacheLimit), 300000);
