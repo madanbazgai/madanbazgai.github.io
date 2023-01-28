@@ -19,7 +19,7 @@ menu:
   main:
     - identifier: search
       name: Search
-      url: /search
+      url: /search/
       weight: 20
     - identifier: categories
       name: Categories
@@ -27,7 +27,7 @@ menu:
       weight: 10
     - identifier: Posts
       name: Posts
-      url: /posts
+      url: /posts/
       weight: 5
     - identifier: tags
       name: Tags
