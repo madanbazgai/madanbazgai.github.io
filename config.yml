@@ -1,10 +1,10 @@
-baseURL: https://madanbajgai.netlify.app/
+baseURL: https://madanbajgai.com.np/
 languageCode: en-us
 title: Madan Bazgai
 theme: PaperMod
 paginate: 5
 
-enableRobotsTXT: true
+enableRobotsTXT: false
 buildDrafts: false
 buildFuture: false
 buildExpired: false
@@ -123,3 +123,4 @@ params:
       SiteVerificationTag: "XYZabc"
     yandex:
       SiteVerificationTag: "XYZabc"
+

@@ -6,11 +6,7 @@
 
 const CACHE_NAME = "my-cache-name";
 const urlsToCache = [
-  "/",
   "/404.html",
-  "index.html",
-  "manifest.json",
-  "madmax.avif",
 ];
 
 self.addEventListener("install", (event) => {
