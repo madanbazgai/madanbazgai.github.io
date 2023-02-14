@@ -47,7 +47,7 @@ self.addEventListener("fetch", (event) => {
         // clone request stream
         var fetchRequest = event.request.clone();
 
-        return fetch(fetchRequest, {redirect: "follow"}).then((response) => {
+        return fetch(fetchRequest).then((response) => {
           if (!response || response.status !== 200) {
             return caches.match("/404.html");
           }
