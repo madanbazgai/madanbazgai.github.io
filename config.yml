@@ -35,7 +35,7 @@ menu:
       weight: 15
     - identifier: projects
       name: Projects
-      url: https://github.com/madanbazgai
+      url: https://github.com/madanbazgai/
       weight: 2
     # - identifier: photoshop
     #   name: Photoshop

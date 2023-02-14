@@ -4,13 +4,13 @@
 // 3. serve 404.html file if the item is not present in cache and the device is offline
 // give me an example code for this implementation
 
-const CACHE_NAME = "my-cache-name";
+const CACHE_NAME = "cache_v1";
 const urlsToCache = [
   "/",
   "/index.html",
-  "/styles.css",
-  "/script.js",
   "/404.html",
+  "/manifest.json",
+  "madmax.avif",
 ];
 
 self.addEventListener("install", (event) => {
