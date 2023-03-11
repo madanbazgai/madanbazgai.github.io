@@ -72,7 +72,7 @@ params:
     imageHeight: 120 # custom size
     buttons:
       - name: Posts
-        url: "/posts"
+        url: "/posts/"
       - name: Github
         url: "https://github.com/madanbazgai"
       # - name: Resume
@@ -123,4 +123,3 @@ params:
       SiteVerificationTag: "XYZabc"
     yandex:
       SiteVerificationTag: "XYZabc"
-
