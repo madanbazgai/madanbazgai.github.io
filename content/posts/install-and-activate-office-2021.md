@@ -30,7 +30,7 @@ editPost:
 
 1. Download Office 2021 from [Here](https://officecdn.microsoft.com/db/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/en-us/ProPlus2021Retail.img).
 2. Install
-3. Download this activation script from [Here](/activate-office.zip).
+3. Download this activation script from [Here](/activate-office.bat).
 4. Run the script as Administrator.
 
 💚 THANK YOU 💚
