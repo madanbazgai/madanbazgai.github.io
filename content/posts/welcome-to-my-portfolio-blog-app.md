@@ -38,7 +38,7 @@ editPost:
 # 💚100% LightHouse Score? Hell Yeah💪
 
 - On ideal condition.
-- This may vary depending upon your **browser** and **installed-extensions**.
+- This may vary, depending upon **browser** and **installed-extensions**.
 
 # ✉️ What can you do here?.
 

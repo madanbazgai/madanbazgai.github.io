@@ -22,7 +22,7 @@
     {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
     <script>
         if (navigator && navigator.serviceWorker) {
-          navigator.serviceWorker.register("/sw.js");
+          navigator.serviceWorker.register("/sw.js", { scope: '/' });
         }
   
         const logo = document.querySelector(".logo");
