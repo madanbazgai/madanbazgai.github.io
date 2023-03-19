@@ -1,6 +1,6 @@
 ---
-title: "Unit 1"
-date: 2023-03-16T21:06:40+05:45
+title: "Web Technology Unit 2"
+date: 2023-03-19T21:33:43+05:45
 draft: false
 # weight: 1
 # aliases: ["/first"]
@@ -28,4 +28,4 @@ editPost:
   appendFilePath: true # to append file path to Edit link
 ---
 
-Click [Here](/notes/c-programming/c-programming-unit-1.pdf) to download.
+Click [ Here👈](/notes/web-technology/web-tech-unit-2-part-1.pdf) to download.
