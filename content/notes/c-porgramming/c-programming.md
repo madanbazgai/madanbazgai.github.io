@@ -17,7 +17,7 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowWordCount: true
 cover:
-  image: "/madmax.avif" # image path/url
+  image: "/images/blogicon/c.avif" # image path/url
   alt: "blog image" # alt text
   caption: "<blog image>" # display caption under cover
   relative: false # when using page bundles set this to true
@@ -28,7 +28,7 @@ editPost:
   appendFilePath: true # to append file path to Edit link
 ---
 
-### Unit-1: Click <button>[ Here👈](/notes/c-programming/c-programming-unit-1.pdf)</button>  to download.
+### Unit-1: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-1.pdf)</button>  to download.
 ### Unit-2 Part-1: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-2.pdf)</button> to download.
 ### Unit-2 Part-2: <button>Click [ Here👈](/notes/c-programming/c-unit-2-IO-operation.pdf)</button> to download.
 
