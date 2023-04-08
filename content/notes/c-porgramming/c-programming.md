@@ -1,5 +1,5 @@
 ---
-title: "C programming Unit 1"
+title: "C programming"
 date: 2023-03-16T21:06:40+05:45
 draft: false
 # weight: 1
@@ -28,4 +28,7 @@ editPost:
   appendFilePath: true # to append file path to Edit link
 ---
 
-Click [ Here👈](/notes/c-programming/c-programming-unit-1.pdf) to download.
+### Unit-1: Click <button>[ Here👈](/notes/c-programming/c-programming-unit-1.pdf)</button>  to download.
+### Unit-2 Part-1: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-2.pdf)</button> to download.
+### Unit-2 Part-2: <button>Click [ Here👈](/notes/c-programming/c-unit-2-IO-operation.pdf)</button> to download.
+
