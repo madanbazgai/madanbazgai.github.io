@@ -4,8 +4,8 @@ date: 2023-01-17T19:29:00+05:45
 draft: false
 # weight: 1
 # aliases: ["/first"]
-categories: ["Default"]
-tags: ["first"]
+categories: ["Tasks"]
+tags: ["Photoshop"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
 showToc: true

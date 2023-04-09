@@ -1,11 +1,11 @@
 ---
-title: "Web Technology Unit 2"
+title: "Web Technology Notes"
 date: 2023-03-19T21:33:43+05:45
 draft: false
 # weight: 1
 # aliases: ["/first"]
-categories: ["Default"]
-tags: ["first"]
+categories: ["Notes"]
+tags: ["web"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
 showToc: true
@@ -28,4 +28,5 @@ editPost:
   appendFilePath: true # to append file path to Edit link
 ---
 
-Click [ Here👈](/notes/web-technology/web-tech-unit-2-part-1.pdf) to download.
+### Unit-2 Part-1: <button>Click [ Here👈](/notes/web-technology/web-tech-unit-2-part-1.pdf)</button> to download.
+### Unit-2 Part-2: <button>Click [ Here👈](/notes/web-technology/web-tech-unit-2-part-2.pdf)</button> to download.

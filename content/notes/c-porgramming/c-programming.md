@@ -1,11 +1,11 @@
 ---
-title: "C programming"
+title: "C programming Notes"
 date: 2023-03-16T21:06:40+05:45
 draft: false
 # weight: 1
 # aliases: ["/first"]
-categories: ["Default"]
-tags: ["first"]
+categories: ["Notes"]
+tags: ["c programming"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
 showToc: true
