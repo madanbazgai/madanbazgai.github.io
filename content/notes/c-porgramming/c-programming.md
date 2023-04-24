@@ -34,4 +34,4 @@ editPost:
 
 ### Unit-2 Part-2: <button>Click [ Here👈](/notes/c-programming/c-unit-2-IO-operation.pdf)</button> to download.
 
-### Unit-3: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-3)</button> to download.
+### Unit-3: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-3.pdf)</button> to download.
