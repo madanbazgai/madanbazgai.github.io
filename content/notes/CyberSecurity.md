@@ -30,3 +30,5 @@ editPost:
 
 ### Unit-1: <button>Click [ Here👈](/notes/cybersecurity/cybersecurity-unit-1.pdf)</button> to download.
 
+### Unit-2: <button>Click [ Here👈](/notes/cybersecurity/cybersecurity-unit-2-revised.pdf)</button> to download.
+
