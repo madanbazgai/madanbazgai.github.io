@@ -31,4 +31,10 @@ editPost:
 ### Unit-1: <button>Click [ Here👈](/notes/cybersecurity/cybersecurity-unit-1.pdf)</button> to download.
 
 ### Unit-2: <button>Click [ Here👈](/notes/cybersecurity/cybersecurity-unit-2-revised.pdf)</button> to download.
+### Unit-3: <button>Click [ Here👈](/notes/cybersecurity/Cybersecurity-Unit-3.pdf)</button> to download.
+### Unit-4: <button>Click [ Here👈](/notes/cybersecurity/Cybersecurity-unit-4.pdf)</button> to download.
+### Unit-5: <button>Click [ Here👈](/notes/cybersecurity/Cybersecurity-unit-5.pdf)</button> to download.
+### Unit-6: <button>Click [ Here👈](/notes/cybersecurity/Cybersecurity-unit-6.pdf)</button> to download.
+### Unit-7: <button>Click [ Here👈](/notes/cybersecurity/Cybersecurity-unit-7.pdf)</button> to download.
+### Unit-8: <button>Click [ Here👈](/notes/cybersecurity/cybersecurity-unit-8.pdf)</button> to download.
 
