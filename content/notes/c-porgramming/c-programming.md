@@ -39,3 +39,5 @@ editPost:
 ### Unit-4: <button>Click [ Here👈](/notes/c-programming/c-programming-unit_4.pdf)</button> to download.
 
 ### Unit-5: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-5.pdf)</button> to download.
+### Unit-6: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-6.pdf)</button> to download.
+### Unit-7: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-7.pdf)</button> to download.
