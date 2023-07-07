@@ -8,8 +8,8 @@ categories: ["Notes"]
 tags: ["c programming"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
-showToc: true
-TocOpen: true
+showToc: false
+TocOpen: false
 description: "Desc Text."
 canonicalURL: "https://canonical.url/to/page"
 ShowReadingTime: true
@@ -39,5 +39,11 @@ editPost:
 ### Unit-4: <button>Click [ Here👈](/notes/c-programming/c-programming-unit_4.pdf)</button> to download.
 
 ### Unit-5: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-5.pdf)</button> to download.
+
 ### Unit-6: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-6.pdf)</button> to download.
+
 ### Unit-7: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-7.pdf)</button> to download.
+
+### Unit-8: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-8.pdf)</button> to download.
+
+### Unit-9: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-9.pdf)</button> to download.
