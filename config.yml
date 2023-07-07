@@ -27,7 +27,7 @@ menu:
       weight: 10
     - identifier: Blog
       name: Blog
-      url: /Blog/
+      url: /blog/
       weight: 5
     - identifier: tags
       name: Tags
@@ -72,7 +72,7 @@ params:
     imageHeight: 120 # custom size
     buttons:
       - name: Blog
-        url: "/Blog/"
+        url: "/blog/"
       - name: Github
         url: "https://github.com/madanbazgai"
       # - name: Resume
