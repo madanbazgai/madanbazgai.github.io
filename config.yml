@@ -25,9 +25,9 @@ menu:
       name: Categories
       url: /categories/
       weight: 10
-    - identifier: Posts
-      name: Posts
-      url: /posts/
+    - identifier: Blog
+      name: Blog
+      url: /Blog/
       weight: 5
     - identifier: tags
       name: Tags
@@ -71,8 +71,8 @@ params:
     imageWidth: 120 # custom size
     imageHeight: 120 # custom size
     buttons:
-      - name: Posts
-        url: "/posts/"
+      - name: Blog
+        url: "/Blog/"
       - name: Github
         url: "https://github.com/madanbazgai"
       # - name: Resume
