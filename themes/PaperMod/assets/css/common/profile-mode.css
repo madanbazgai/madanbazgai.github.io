@@ -102,8 +102,9 @@
 @media only screen and (max-width: 600px) {
   .main {
     height: 90vh;
-   display: grid;
-   place-items: center;
+  }
+  .main .profile{
+    padding-top: 8rem;
   }
   .pinned-article {
     width: 300px;
