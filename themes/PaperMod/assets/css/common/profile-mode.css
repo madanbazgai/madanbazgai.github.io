@@ -101,6 +101,7 @@
 
 @media only screen and (max-width: 600px) {
   .main {
+    height: 90vh;
    display: grid;
    place-items: center;
   }
