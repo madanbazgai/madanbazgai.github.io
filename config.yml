@@ -65,7 +65,7 @@ params:
   profileMode:
     enabled: true
     title: Madan Bazgai # optional default will be site title
-    subtitle: 💻Software Engineer | 👨‍💻Developer
+    subtitle: 💻Engineer | 👨‍💻Developer | 🧑‍🏫Teacher | 🧑‍🎓Student
     imageUrl: madmax.avif
     imageTitle: profile picture
     imageWidth: 120 # custom size
@@ -81,8 +81,8 @@ params:
   socialIcons: # optional
     - name: email
       url: "mailto:madanbajgai@gmail.com"
-    - name: phone
-      url: tel:977-980-451-6288
+    # - name: phone
+    #   url: tel:+9779804516288
     - name: whatsapp
       url: "https://wa.me/9779804516288"
     - name: twitter
