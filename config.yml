@@ -65,7 +65,7 @@ params:
   profileMode:
     enabled: true
     title: Madan Bazgai # optional default will be site title
-    subtitle: 💻Engineer | 👨‍💻Developer | 🧑‍🏫Teacher | 🧑‍🎓Student
+    subtitle: 💻Engineer | 👨‍💻Developer
     imageUrl: madmax.avif
     imageTitle: profile picture
     imageWidth: 120 # custom size
