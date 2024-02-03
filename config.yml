@@ -66,7 +66,7 @@ params:
     enabled: true
     title: Madan Bazgai # optional default will be site title
     subtitle: 💻Engineer | 👨‍💻Developer
-    imageUrl: madmax.avif
+    imageUrl: madmax.jpg
     imageTitle: profile picture
     imageWidth: 120 # custom size
     imageHeight: 120 # custom size

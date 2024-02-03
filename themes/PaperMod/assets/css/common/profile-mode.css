@@ -33,9 +33,9 @@
 .profile img {
   display: inline-table;
   border-radius: 3%;
-  webkit-box-shadow: -2px 10px 300px 200px rgb(0 130 230);
-  -moz-box-shadow: -2px 10px 300px 200px rgba(0, 130, 230, 1);
-  box-shadow: 0px 0px 100px 8px rgb(0 130 230);
+  webkit-box-shadow:0 0 134px 19px #4d3999bf;
+  -moz-box-shadow: 0 0 134px 19px #4d3999bf;
+  box-shadow: 0 0 134px 19px #4d3999bf;
 }
 
 .buttons {
