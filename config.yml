@@ -2,7 +2,8 @@ baseURL:
 languageCode: en-us
 title: Madan Bazgai
 theme: PaperMod
-paginate: 5
+pagination:
+  pagerSize: 5
 
 enableRobotsTXT: false
 buildDrafts: false
