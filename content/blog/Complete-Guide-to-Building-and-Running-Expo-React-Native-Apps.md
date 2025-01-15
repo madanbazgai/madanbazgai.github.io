@@ -28,7 +28,7 @@ editPost:
   appendFilePath: true # to append file path to Edit link
 ---
 
-![Image showing Lighthouse Score](https://images.ctfassets.net/oae75tj4gg8d/1skfknXgpOlfjzqEAeQDRG/662f837cc678d66eaa9214050fdfaa4b/expo-diagram1_compare_2x.png)
+![Expo](https://images.ctfassets.net/oae75tj4gg8d/1skfknXgpOlfjzqEAeQDRG/662f837cc678d66eaa9214050fdfaa4b/expo-diagram1_compare_2x.png)
 
 ## Summary
 
