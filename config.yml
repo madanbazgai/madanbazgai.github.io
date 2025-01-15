@@ -54,7 +54,7 @@ params:
   description: "This is a portfolio and blog site created, designed & developed by Madan Bazgai"
   keywords: [Blog, Portfolio, Madan Bazgai, Madan Bajgai, MadMax]
   author: Author - Madan Bazgai
-  images: ["<link or path of image for opengraph, twitter-cards>"]
+  images: ["madmax.jpg"]  # Using your profile image, or you can use absolute URLs
   cover:
     hidden: false
     linkFullImages: true

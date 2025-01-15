@@ -10,7 +10,7 @@ author: "Me"
 # author: ["Me", "You"] # multiple authors
 showToc: true
 TocOpen: false
-description: "Desc Text."
+description: ""
 canonicalURL: "https://canonical.url/to/page"
 ShowReadingTime: true
 ShowBreadCrumbs: true
