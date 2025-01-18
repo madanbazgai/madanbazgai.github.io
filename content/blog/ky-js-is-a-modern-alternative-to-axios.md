@@ -4,10 +4,10 @@ date: 2025-01-15T21:57:58+05:45
 draft: false
 # weight: 1
 # aliases: ["/first"]
+# author: ["Me", "You"] # multiple authors
 categories: ["Javascript"]
 tags: ["first", "pinned"]
 author: "Me"
-# author: ["Me", "You"] # multiple authors
 showToc: true
 TocOpen: false
 description: ""
@@ -17,11 +17,11 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowWordCount: true
 cover:
-  image: "images/blogicon/kyvsaxios.png" # image path/url
-  alt: "blog image" # alt text
-  caption: "<blog image>" # display caption under cover
-  relative: false # when using page bundles set this to true
-  hidden: true # only hide on current single page
+  image: "/images/blogicon/kyvsaxios.png"
+  alt: "Ky.js vs Axios comparison"  
+  caption: "Comparison between Ky.js and Axios"
+  relative: false
+  hidden: false
 editPost:
   URL: "https://github.com/madanbazgai/madanbazgai.github.io/tree/master/content/posts/"
   Text: "Click here to Suggest Changes" # edit text
