@@ -26,44 +26,58 @@ cover:
 
 ![Image showing Lighthouse Score](/images/postsimage/welcome.webp)
 
-# 🤔What is it about?
+# 📄 About This Website
 
-- This is my personal Portfolio/Blog app.
-- This app is powered by the technologies such as [Hugo](https://gohugo.io/), PWA etc.
+This is my **personal portfolio and blog application**, built to showcase my work, share articles, and experiment with modern web technologies.
+It is powered by **[Hugo](https://gohugo.io/)**, **Progressive Web App (PWA)** capabilities, and various performance-focused optimizations.
 
-# 👉What is Hugo?
+---
 
-- Hugo is the fastest static-site generator powered by Googles's Go programming language.
-- By default it ships only HTML which makes website faster.
+## 🛠 What is Hugo?
 
-# 👉What is PWA ?
+- **Hugo** is one of the fastest static-site generators, built using **Google’s Go programming language**.
+- By default, Hugo outputs static HTML files, which results in extremely fast page load times and excellent performance.
 
-- PWA stands for Progressive Web Apps.
-- It is a way of turning the existing **web-apps** into **native-like app** with some native capabilities.
-- The app can be installed on both **Smartphone** and **Desktop**.
-- The app can work **Offline** and the users donot have to update app. (They are automatically updated on refresh)
+---
 
-# 💚100% LightHouse Score.💪
+## 📱 What is a PWA?
 
-- Being static site, on ideal condition it has 100% lighthouse score on performance, accessibility, SEO and PWA.
-- This may vary, depending upon **browser** and **installed-extensions**.
+- **PWA (Progressive Web App)** is a technology that enhances web applications with **native app-like capabilities**.
+- PWAs can be installed on both **smartphones** and **desktops**.
+- They support **offline access** and automatically update in the background when the page is refreshed.
 
-# 😎What did I do here?
+---
 
-- I fully designed, customized and developed this app.
-- This app is inspired by the Hugo theme called 'papermod' and the Nothing OS font.
-- This app has modern features such as:
-  - [x] Dark/Light Mode
-  - [x] Installable
-  - [x] Offline Capability
-  - [x] Search ... and so much more
+## 📊 100% Lighthouse Score
 
-# ✉️ What can you do here?.
+- Thanks to its static nature, the site can achieve a **perfect 100% score** in Google Lighthouse for **Performance**, **Accessibility**, **SEO**, and **PWA**—under optimal conditions.
+- Actual results may vary depending on the **browser** and installed **extensions**.
 
-- Well the first thing you can do is **install** this app, **by clicking** on my **name** on the **top of the page**.
-- Follow me on github and other social-platform.
-- You can read articles.
-- You can suggest changes.
-- You can comment to the blog post.
+---
 
-# 💚 THANK YOU 💚
+## 🎨 My Contributions
+
+I designed, customized, and developed this application entirely from scratch.
+It draws inspiration from the **Hugo Papermod theme** and incorporates the **Nothing OS** font style.
+
+Key features include:
+
+- 🌗 **Dark/Light Mode**
+- 📥 **Installable as an app**
+- 📶 **Offline capability**
+- 🔍 **Search functionality**
+- …and many more enhancements
+
+---
+
+## 📬 What You Can Do
+
+- **Install** this app by clicking my **name** at the top of the page.
+- Follow me on **GitHub** and other social platforms.
+- Read and engage with articles.
+- Suggest improvements.
+- Leave comments on blog posts.
+
+---
+
+💚 **Thank you for visiting!** 💚
