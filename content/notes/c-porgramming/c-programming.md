@@ -8,7 +8,7 @@ categories: ["Notes"]
 tags: ["c programming"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
-showToc: false
+showToc: true
 TocOpen: false
 description: "Desc Text."
 canonicalURL: "https://canonical.url/to/page"
@@ -22,10 +22,6 @@ cover:
   caption: "<blog image>" # display caption under cover
   relative: false # when using page bundles set this to true
   hidden: true # only hide on current single page
-editPost:
-  URL: "https://github.com/madanbazgai/madanbazgai.github.io/tree/master/content/posts/"
-  Text: "Click here to Suggest Changes" # edit text
-  appendFilePath: true # to append file path to Edit link
 ---
 
 ### Unit-1: <button>Click [ Here👈](/notes/c-programming/c-programming-unit-1.pdf)</button> to download.

@@ -18,14 +18,10 @@ ShowPostNavLinks: true
 ShowWordCount: true
 cover:
   image: "/images/blogicon/kyvsaxios.png"
-  alt: "Ky.js vs Axios comparison"  
+  alt: "Ky.js vs Axios comparison"
   caption: "Comparison between Ky.js and Axios"
   relative: false
   hidden: false
-editPost:
-  URL: "https://github.com/madanbazgai/madanbazgai.github.io/tree/master/content/posts/"
-  Text: "Click here to Suggest Changes" # edit text
-  appendFilePath: true # to append file path to Edit link
 ---
 
 [jump to code](#installation)

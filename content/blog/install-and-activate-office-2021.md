@@ -8,8 +8,8 @@ categories: ["Windows"]
 tags: ["Windows", "Office"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
-showToc: false
-TocOpen: true
+showToc: true
+TocOpen: false
 description: "Desc Text."
 canonicalURL: "https://canonical.url/to/page"
 ShowReadingTime: true
@@ -22,10 +22,6 @@ cover:
   caption: "<blog image>" # display caption under cover
   relative: false # when using page bundles set this to true
   hidden: true # only hide on current single page
-editPost:
-  URL: "https://github.com/madanbazgai/madanbazgai.github.io/tree/master/content/posts/"
-  Text: "Click here to Suggest Changes" # edit text
-  appendFilePath: true # to append file path to Edit link
 ---
 
 1. Download Office 2021 from [Here](https://officecdn.microsoft.com/db/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/en-us/ProPlus2021Retail.img).

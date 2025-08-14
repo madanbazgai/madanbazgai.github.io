@@ -22,10 +22,6 @@ cover:
   caption: "welcome image" # display caption under cover
   relative: false # when using page bundles set this to true
   hidden: true # only hide on current single page
-editPost:
-  URL: "https://github.com/madanbazgai/madanbazgai.github.io/tree/master/content/posts/"
-  Text: "Click here to Suggest Changes" # edit text
-  appendFilePath: true # to append file path to Edit link
 ---
 
 ![Image showing Lighthouse Score](/images/postsimage/welcome.webp)
@@ -69,9 +65,5 @@ editPost:
 - You can read articles.
 - You can suggest changes.
 - You can comment to the blog post.
-
-
-
-
 
 # 💚 THANK YOU 💚

@@ -9,7 +9,7 @@ tags: ["mobile", "pinned"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
 showToc: true
-TocOpen: true
+TocOpen: false
 description: "Desc Text."
 canonicalURL: "https://canonical.url/to/page"
 ShowReadingTime: true
@@ -22,10 +22,6 @@ cover:
   caption: "<blog image>" # display caption under cover
   relative: false # when using page bundles set this to true
   hidden: true # only hide on current single page
-editPost:
-  URL: "https://github.com/madanbazgai/madanbazgai.github.io/tree/master/content/posts/"
-  Text: "Click here to Suggest Changes" # edit text
-  appendFilePath: true # to append file path to Edit link
 ---
 
 ![Expo](https://images.ctfassets.net/oae75tj4gg8d/1skfknXgpOlfjzqEAeQDRG/662f837cc678d66eaa9214050fdfaa4b/expo-diagram1_compare_2x.png)

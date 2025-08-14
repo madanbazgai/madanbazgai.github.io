@@ -9,7 +9,7 @@ tags: ["tailwindcss", "pinned"]
 author: "Me"
 # author: ["Me", "You"] # multiple authors
 showToc: true
-TocOpen: true
+TocOpen: false
 # description: "Desc Text."
 canonicalURL: "https://canonical.url/to/page"
 ShowReadingTime: true
@@ -22,10 +22,7 @@ cover:
   caption: "<blog image>" # display caption under cover
   relative: false # when using page bundles set this to true
   hidden: true # only hide on current single page
-
 ---
-
-
 
 ![TailwindCss](/images/blogicon/tailwindcss.png)
 Tailwind CSS is one of my favorite and go-to tools. It's almost a standard way of writing CSS these days. Even LLMs and AI tools are giving Tailwind CSS code these days.
@@ -52,11 +49,11 @@ Here's a quick guide to get started with Tailwind CSS V4 and Vite:
 2.  **Import in `vite.config.ts`**
 
     ```javascript
-    import { defineConfig } from 'vite';
-    import tailwindcss from '@tailwindcss/vite';
+    import { defineConfig } from "vite";
+    import tailwindcss from "@tailwindcss/vite";
 
     export default defineConfig({
-        plugins: [tailwindcss()]
+      plugins: [tailwindcss()],
     });
     ```
 

@@ -54,7 +54,7 @@ params:
   description: "This is a portfolio and blog site created, designed & developed by Madan Bazgai"
   keywords: [Blog, Portfolio, Madan Bazgai, Madan Bajgai, MadMax]
   author: Author - Madan Bazgai
-  images: ["/madmax.jpg"]  # Using your profile image, or you can use absolute URLs
+  images: ["/madmax.jpg"] # Using your profile image, or you can use absolute URLs
   cover:
     hidden: false
     linkFullImages: true
@@ -100,10 +100,6 @@ params:
     #   url: ""
     # - name: youtube
     #   url: ""
-
-  editPost:
-    URL: "https://github.com/<path_to_repo>/content"
-    Text: "Suggest Changes" # edit text
 
   assets:
     favicon: "favicon.ico"
