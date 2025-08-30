@@ -102,11 +102,14 @@ params:
     #   url: ""
 
   assets:
+    disableHLJS: false
     favicon: "favicon.ico"
     favicon16x16: "favicon.ico"
     favicon32x32: "favicon.ico"
     apple_touch_icon: "icons/icon-192x192.png"
     safari_pinned_tab: "icons/icon-192x192.png"
+  customCSS:
+    - "css/custom.css"
 
   label:
     text: "Madan Bazgai"
