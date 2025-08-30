@@ -13,6 +13,7 @@ ShowBreadCrumbs: false
 ShowPostNavLinks: false
 ShowWordCount: false
 cover:
+    image: "/images/blogicon/use.png"
     alt: "React use use" # alt text
     caption: "<blog image>" # display caption under cover
     relative: false # when using page bundles set this to true
