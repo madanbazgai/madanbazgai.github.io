@@ -42,7 +42,7 @@ React introduced it in react 19 and it has simplified few different things.
 
 ## 1. Data Fetching
 
-```tsx
+```javascript
 import { use } from "react";
 
 async function fetchUsers() {
@@ -68,7 +68,7 @@ You can use `<Suspense>` and `<ErrorBoundary>` for loading and error handling.
 
 ## 2. Consuming Context
 
-```tsx
+```javascript
 import { createContext, use } from "react";
 
 const ThemeContext = createContext("light");
@@ -94,7 +94,7 @@ function MyComponent() {
 
 Unlike other hooks, `use` can be called inside conditionals or loops.
 
-```tsx
+```javascript
 function Button({ show, children }) {
   if (show) {
     const theme = use(ThemeContext);
