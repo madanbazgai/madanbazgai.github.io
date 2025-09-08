@@ -2,11 +2,9 @@
 title: "Dead Simple Yet Powerful Global State Manager for Redux Haters"
 date: 2025-08-14T11:19:36+05:45
 draft: false
-# weight: 1
-# aliases: ["/first"]
 categories: ["React"]
+tags: ["state manager", "pinned"]
 author: "Me"
-# author: ["Me", "You"] # multiple authors
 showToc: true
 TocOpen: false
 canonicalURL: "https://canonical.url/to/page"
@@ -15,16 +13,18 @@ ShowBreadCrumbs: false
 ShowPostNavLinks: false
 ShowWordCount: false
 cover:
-  image: "/images/blogicon/jotai.png" # image path/url
-  alt: "Dead Simple Yet Powerful Global State Manager for Redux Haters" # alt text
-  caption: "<blog image>" # display caption under cover
-  relative: false # when using page bundles set this to true
-  hidden: true # only hide on current single page
+  image: "/images/blogicon/jotai.png"
+  alt: "Dead Simple Yet Powerful Global State Manager for Redux Haters"
+  caption: "<blog image>"
+  relative: false
+  hidden: true
 ---
+
+ℹ️ This article is authentic, fully organic, handcrafted by a human mind. No AI was harmed or used in generating the ideas for content and title.
 
 **`themeAtom.ts`**
 
-```javascript
+```typescript
 import { atom } from "jotai";
 
 export const themeAtom = atom("light");
@@ -32,7 +32,7 @@ export const themeAtom = atom("light");
 
 **`App.tsx`**
 
-```javascript
+```typescript
 import { useAtom } from "jotai";
 import { themeAtom } from "./themeAtom";
 

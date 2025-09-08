@@ -32,10 +32,13 @@
 } */
 .profile img {
   display: inline-table;
-  border-radius: 3%;
-  webkit-box-shadow:0 0 134px 19px #4d3999bf;
-  -moz-box-shadow: 0 0 134px 19px #4d3999bf;
-  box-shadow: 0 0 134px 19px #4d3999bf;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 25px;
+  webkit-box-shadow: 0 0 134px 19px #000000;
+  -moz-box-shadow: 0 0 134px 19px #000000;
+  box-shadow: 0 0 134px 19px #000000;
 }
 
 .buttons {
@@ -103,7 +106,7 @@
   .main {
     height: 90vh;
   }
-  .main .profile{
+  .main .profile {
     padding-top: 8rem;
   }
   .pinned-article {
