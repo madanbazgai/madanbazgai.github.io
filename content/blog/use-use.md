@@ -26,12 +26,14 @@ cover:
 
 **`'use use'`** is a meme going around in a react ecosystem, with the introduction of many use directives like:
 
+- `"use strict"`
 - `"use client"`
 - `"use server"`
 - `"use cache"`
 - `"use memo"`
 - `"use no memo"`
 - `"use dom"`
+- `"use workflow"`
 
 But this article is not about `directives`, its about the `use` hook.
 React introduced it in react 19 and it has simplified few different things.
