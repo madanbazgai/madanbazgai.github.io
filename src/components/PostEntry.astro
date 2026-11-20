@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import { SITE } from "../config";
 import { formatDate, postUrl, stats, type Post } from "../lib/posts";
 
 interface Props {
@@ -9,9 +8,7 @@ interface Props {
 }
 
 const { post, tagEntry = false } = Astro.props;
-const { title, date, cover, author = SITE.author, showReadingTime, showWordCount } = post.data;
-const { summary, minutes, words } = stats(post);
-const meta = [showReadingTime && `${minutes} min`, showWordCount && `${words} words`, author].filter(Boolean);
+const { title, date, description, cover } = post.data;
 ---
 
 <article class:list={["post-entry", { "tag-entry": tagEntry }]}>
@@ -19,7 +16,7 @@ const meta = [showReadingTime && `${minutes} min`, showWordCount && `${words} wo
     cover && (
       <figure class="entry-cover">
         {typeof cover.image === "string" ? (
-          <img loading="lazy" src={cover.image} alt={cover.alt} />
+          <img loading="lazy" src={cover.image} alt={cover.alt} width="400" height="210" />
         ) : (
           <Image src={cover.image} alt={cover.alt} width={400} />
         )}
@@ -28,9 +25,10 @@ const meta = [showReadingTime && `${minutes} min`, showWordCount && `${words} wo
   }
   <div class="article-content">
     <header class="entry-header"><h2>{title}</h2></header>
-    <div class="entry-content"><p>{summary}</p></div>
+    <div class="entry-content"><p>{description}</p></div>
     <footer class="entry-footer">
-      <span title={date.toISOString()}>{formatDate(date)}</span>{meta.map((item) => ` · ${item}`)}
+      <time datetime={date.toISOString()}>{formatDate(date)}</time>
+      {post.collection === "blog" && ` · ${stats(post).minutes} min read`}
     </footer>
   </div>
   <a class="entry-link" aria-label={`post link to ${title}`} href={postUrl(post)}></a>

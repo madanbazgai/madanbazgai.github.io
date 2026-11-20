@@ -43,7 +43,7 @@ export const postSchema = (post: Post, site: URL, image: string) => {
         image: url(image, site),
         url: url(postUrl(post), site),
         mainEntityOfPage: url(postUrl(post), site),
-        keywords: post.data.tags.filter((tag) => tag !== "pinned"),
+        keywords: post.data.tags,
         inLanguage: "en",
         author: person(site),
       },

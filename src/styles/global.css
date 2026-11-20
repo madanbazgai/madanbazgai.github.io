@@ -19,6 +19,19 @@
 @import "./papermod/zmedia.css";
 
 /* Site overrides */
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  /* minmax(0, …) stops long code lines from widening the page */
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 100dvh;
+}
+
+/* Auto margins shrink-wrap grid items; keep main full width (still capped by its max-width). */
+.main {
+  width: 100%;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -41,11 +54,6 @@
 .post-title {
   margin-bottom: 15px !important;
   line-height: 1.3;
-}
-
-.post-description {
-  margin-top: 15px;
-  margin-bottom: 10px;
 }
 
 .pinned-article a {

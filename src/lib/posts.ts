@@ -4,11 +4,9 @@ import { SECTIONS, type Section } from "../config";
 export type Post = CollectionEntry<Section>;
 export type Taxonomy = "tags" | "categories";
 
-// Same ordering Hugo used: weight first, then newest, then title.
+// Newest first; posts published at the same moment fall back to title order.
 const compare = (a: Post, b: Post) =>
-  (a.data.weight ?? Infinity) - (b.data.weight ?? Infinity) ||
-  b.data.date.valueOf() - a.data.date.valueOf() ||
-  a.data.title.localeCompare(b.data.title);
+  b.data.date.valueOf() - a.data.date.valueOf() || a.data.title.localeCompare(b.data.title);
 
 export async function getPosts(section?: Section): Promise<Post[]> {
   const sections = section ? [section] : (Object.keys(SECTIONS) as Section[]);
@@ -30,13 +28,7 @@ export function stats(post: Post) {
     .replace(/&(amp|lt|gt|quot|#39|nbsp);/g, (_, e: string) => entities[e])
     .replace(/\s+/g, " ")
     .trim();
-  const words = text.split(" ").filter(Boolean);
-  return {
-    text,
-    words: words.length,
-    minutes: Math.ceil(words.length / 213),
-    summary: words.length > 70 ? `${words.slice(0, 70).join(" ")}...` : text,
-  };
+  return { text, minutes: Math.ceil(text.split(" ").length / 213) };
 }
 
 export async function getTerms(taxonomy: Taxonomy) {

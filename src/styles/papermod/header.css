@@ -73,31 +73,18 @@ body:not(.dark) #sun {
   border-bottom: 2px solid currentColor;
 }
 
-.lang-switch li,
-.lang-switch ul,
-.logo-switches {
-  display: inline-flex;
-  margin: auto 4px;
-}
-
-.lang-switch {
-  display: flex;
-  flex-wrap: inherit;
-}
-
-.lang-switch a {
-  margin: auto 3px;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.logo-switches {
-  flex-wrap: inherit;
-}
 .search-icon {
   margin-top: 18px;
 }
 @media only screen and (max-width: 600px) {
+  #menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 12px;
+  }
+  #menu li + li {
+    margin-inline-start: 12px;
+  }
   .nav {
     justify-content: center;
     line-height: 1;

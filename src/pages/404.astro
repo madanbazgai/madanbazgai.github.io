@@ -3,5 +3,30 @@ import Base from "../layouts/Base.astro";
 ---
 
 <Base title="404 Page not found" noindex list>
-  <div class="not-found">404</div>
+  <div class="not-found">
+    <h1>404</h1>
+    <p>This page doesn't exist or has moved.</p>
+    <p><a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="/search/">Search</a></p>
+  </div>
 </Base>
+
+<style>
+  .not-found {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+
+    h1 {
+      font-size: inherit;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: normal;
+    }
+
+    a {
+      box-shadow: 0 1px 0;
+    }
+  }
+</style>

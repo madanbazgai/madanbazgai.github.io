@@ -6,7 +6,7 @@ import ShareButtons from "../../components/ShareButtons.astro";
 import Toc from "../../components/Toc.astro";
 import { SECTIONS } from "../../config";
 import Base from "../../layouts/Base.astro";
-import { getPosts, postUrl, slugify, type Post } from "../../lib/posts";
+import { formatDate, getPosts, postUrl, slugify, stats, type Post } from "../../lib/posts";
 import { postSchema } from "../../lib/schema";
 
 export async function getStaticPaths() {
@@ -18,35 +18,34 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props as { post: Post };
 const { Content, headings } = await render(post);
-const { title, description, tags, cover, showBreadcrumbs, showPostNav } = post.data;
+const { title, description, date, tags, cover } = post.data;
+const source = cover?.image ?? profile;
 const image =
-  typeof cover?.image === "string"
-    ? cover.image
-    : (await getImage({ src: cover?.image ?? profile, format: "jpg", width: 1200 })).src;
+  typeof source === "string" ? source : (await getImage({ src: source, format: "jpg", width: Math.min(source.width, 1200) })).src;
 
-// Prev/next links only exist between blog posts, like before.
+// Prev/next links only exist between blog posts.
 const blog = await getPosts("blog");
 const index = blog.findIndex((p) => p.collection === post.collection && p.id === post.id);
-const [prev, next] = showPostNav && index >= 0 ? [blog[index - 1], blog[index + 1]] : [];
+const [prev, next] = index >= 0 ? [blog[index - 1], blog[index + 1]] : [];
 ---
 
 <Base
   title={title}
   description={description}
   image={image}
-  article={{ published: post.data.date, tags: tags.filter((tag) => tag !== "pinned") }}
+  article={{ published: date, tags }}
   jsonLd={postSchema(post, Astro.site!, image)}
 >
   <article class="post-single">
     <header class="post-header">
-      {
-        showBreadcrumbs && (
-          <div class="breadcrumbs">
-            <a href="/">Home</a>&nbsp;»&nbsp;<a href={`/${post.collection}/`}>{SECTIONS[post.collection].title}</a>
-          </div>
-        )
-      }
+      <div class="breadcrumbs">
+        <a href="/">Home</a>&nbsp;»&nbsp;<a href={`/${post.collection}/`}>{SECTIONS[post.collection].title}</a>
+      </div>
       <h1 class="post-title">{title}</h1>
+      <div class="post-meta">
+        <time datetime={date.toISOString()}>{formatDate(date)}</time>
+        {post.collection === "blog" && ` · ${stats(post).minutes} min read`}
+      </div>
     </header>
     <Toc headings={headings} />
     <div class="post-content"><Content /></div>
@@ -76,10 +75,6 @@ const [prev, next] = showPostNav && index >= 0 ? [blog[index - 1], blog[index + 
       }
       <ShareButtons title={title} url={Astro.url.href} tags={tags} />
     </footer>
-    <div id="fb-root"></div>
-    <div class="fb-comments" data-colorscheme="dark" data-href="https://madanbajgai.com.np/blogs" data-width="80%"
-      data-numposts="5">
-    </div>
   </article>
 </Base>
 
@@ -90,24 +85,6 @@ const [prev, next] = showPostNav && index >= 0 ? [blog[index - 1], blog[index + 
     anchor.ariaHidden = "true";
     anchor.textContent = "#";
     heading.append(anchor);
-  }
-
-  // Facebook comments: load the (heavy) SDK only when the reader scrolls near them.
-  const comments = document.querySelector(".fb-comments");
-  if (comments) {
-    new IntersectionObserver(
-      ([entry], observer) => {
-        if (!entry.isIntersecting) return;
-        observer.disconnect();
-        const sdk = Object.assign(document.createElement("script"), {
-          src: "https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=468333708425781",
-          async: true,
-          crossOrigin: "anonymous",
-        });
-        document.body.append(sdk);
-      },
-      { rootMargin: "400px" },
-    ).observe(comments);
   }
 
   // Copy button on code blocks.

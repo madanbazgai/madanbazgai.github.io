@@ -7,7 +7,7 @@ import Base from "../layouts/Base.astro";
 import { formatShortDate, getPosts, postUrl } from "../lib/posts";
 import { homeSchema } from "../lib/schema";
 
-const pinned = (await getPosts()).filter((post) => post.data.tags.includes("pinned"));
+const pinned = (await getPosts()).filter((post) => post.data.pinned);
 ---
 
 <Base jsonLd={homeSchema(Astro.site!)} list>

@@ -1,7 +1,6 @@
 ---
 import type { ImageMetadata } from "astro";
 import { Font, getImage } from "astro:assets";
-import { pwaInfo } from "virtual:pwa-info";
 import profile from "../assets/madmax.jpg";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
@@ -25,8 +24,9 @@ const { title, description = SITE.description, image, noindex = false, article, 
 const fullTitle = title ? `${title} | ${SITE.title}` : `${SITE.title} | ${SITE.tagline}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 // Social networks don't all read AVIF/WebP, so preview images are converted to JPEG.
+const source = image ?? profile;
 const preview =
-  typeof image === "string" ? image : (await getImage({ src: image ?? profile, format: "jpg", width: 1200 })).src;
+  typeof source === "string" ? source : (await getImage({ src: source, format: "jpg", width: Math.min(source.width, 1200) })).src;
 const previewUrl = new URL(preview, Astro.site);
 ---
 
@@ -41,8 +41,8 @@ const previewUrl = new URL(preview, Astro.site);
     {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="google-site-verification" content={SITE.googleSiteVerification} />
     <meta name="theme-color" content="#000" />
-    <link rel="canonical" href={canonical} />
-    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+    {!noindex && <link rel="canonical" href={canonical} />}
+    <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -77,19 +77,9 @@ const previewUrl = new URL(preview, Astro.site);
 </html>
 
 <script>
-  import { registerSW } from "virtual:pwa-register";
-
-  registerSW({ immediate: true });
+  navigator.serviceWorker?.register("/sw.js");
 
   // Caches left behind by the old hand-written service worker.
   caches?.delete("my-cache");
   caches?.delete("image-cache");
-
-  // Clicking the logo offers "install app" when the browser supports it.
-  addEventListener("beforeinstallprompt", (event) => {
-    event.preventDefault();
-    document
-      .querySelector(".logo")
-      ?.addEventListener("click", () => (event as Event & { prompt(): void }).prompt(), { once: true });
-  });
 </script>

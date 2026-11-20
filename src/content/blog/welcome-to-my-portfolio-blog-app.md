@@ -2,17 +2,12 @@
 title: "Welcome to My Portfolio/Blog App"
 date: 2022-09-05T17:22:24+05:45
 description: "About this portfolio and blog: built with Astro as a fast, installable Progressive Web App with offline support, dark mode and search."
-weight: 1
-author: "Me"
 categories: ["Blog"]
-tags: ["pinned"]
+tags: []
+pinned: true
 cover:
-  image: "../../assets/images/blogicon/welcomeicon.webp"
+  image: "../../assets/images/blogicon/welcome-cover.webp"
   alt: "Lighthouse scores for this website"
-showReadingTime: true
-showWordCount: true
-showBreadcrumbs: true
-showPostNav: true
 ---
 
 ![Image showing Lighthouse Score](../../assets/images/blogicon/welcomeicon.webp)
@@ -72,7 +67,6 @@ Key features include:
 - Follow me on **GitHub** and other social platforms.
 - Read and engage with articles, or subscribe via **[RSS](/blog/index.xml)**.
 - Suggest improvements.
-- Leave comments on blog posts.
 
 ---
 

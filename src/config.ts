@@ -21,6 +21,7 @@ export const SITE = {
 export const MENU = [
   { name: "Projects", url: "https://github.com/madanbazgai/" },
   { name: "Blog", url: "/blog/" },
+  { name: "Notes", url: "/notes/" },
   { name: "Categories", url: "/categories/" },
   { name: "Tags", url: "/tags/" },
 ];

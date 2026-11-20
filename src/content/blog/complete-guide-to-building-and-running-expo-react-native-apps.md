@@ -2,16 +2,12 @@
 title: "Complete Guide to Building and Running Expo(React Native) Apps"
 date: 2025-01-13T23:03:02+05:45
 description: "Five ways to build and run Expo (React Native) apps: Expo Go, Prebuild, native builds with Android Studio or Xcode, EAS Build, and debugging tools."
-author: "Me"
 categories: ["Expo/React Native"]
-tags: ["mobile", "pinned"]
+tags: ["mobile"]
+pinned: true
 cover:
   image: "https://images.ctfassets.net/oae75tj4gg8d/1skfknXgpOlfjzqEAeQDRG/662f837cc678d66eaa9214050fdfaa4b/expo-diagram1_compare_2x.png"
   alt: "Expo build options diagram"
-showReadingTime: true
-showWordCount: true
-showBreadcrumbs: true
-showPostNav: true
 ---
 
 ![Expo](https://images.ctfassets.net/oae75tj4gg8d/1skfknXgpOlfjzqEAeQDRG/662f837cc678d66eaa9214050fdfaa4b/expo-diagram1_compare_2x.png)

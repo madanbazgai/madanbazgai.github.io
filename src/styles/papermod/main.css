@@ -1,30 +1,8 @@
 .main {
   position: relative;
-  min-height: calc(95vh - var(--header-height) - var(--footer-height));
   max-width: calc(var(--main-width) + var(--gap) * 2);
   margin: auto;
   padding: var(--gap);
-}
-
-.page-header h1 {
-  font-size: 1rem;
-}
-
-.pagination {
-  display: flex;
-}
-
-.pagination a {
-  color: var(--theme);
-  font-size: 13px;
-  line-height: 36px;
-  background: var(--primary);
-  border-radius: calc(36px / 2);
-  padding: 0 16px;
-}
-
-.pagination .next {
-  margin-inline-start: auto;
 }
 
 .social-icons {
@@ -44,7 +22,6 @@ code {
   direction: ltr;
 }
 
-div.highlight,
 pre {
   position: relative;
 }
@@ -62,7 +39,13 @@ pre {
   user-select: none;
 }
 
-div.highlight:hover .copy-code,
-pre:hover .copy-code {
+pre:hover .copy-code,
+pre:focus-within .copy-code {
   display: block;
+}
+
+@media (hover: none) {
+  .copy-code {
+    display: block;
+  }
 }

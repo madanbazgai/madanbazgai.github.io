@@ -2,15 +2,11 @@
 title: "Cyber Security & Professional Ethics"
 date: 2023-05-14T09:13:56+05:45
 description: "Download unit-wise PDF notes for Cyber Security & Professional Ethics, units 1 to 8."
-author: "madan bajagai"
 categories: ["Notes"]
 tags: ["CyberSecurity"]
 cover:
   image: "../../assets/images/blogicon/cybersecurity.avif"
   alt: "Cyber security"
-showWordCount: true
-showBreadcrumbs: true
-showPostNav: true
 ---
 
 ### Unit-1: Click [ Here👈](/notes/cybersecurity/cybersecurity-unit-1.pdf) to download.

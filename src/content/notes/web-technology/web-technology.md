@@ -2,16 +2,11 @@
 title: "Web Technology Notes"
 date: 2023-03-19T21:33:43+05:45
 description: "Download unit-wise PDF notes for Web Technology, units 1 to 7."
-author: "Me"
 categories: ["Notes"]
 tags: ["web"]
 cover:
   image: "../../../assets/images/blogicon/html5.avif"
   alt: "HTML5 logo"
-showReadingTime: true
-showWordCount: true
-showBreadcrumbs: true
-showPostNav: true
 ---
 
 ### Unit-1: Click [ Here👈](/notes/web-technology/web-tech-unit-1.pdf) to download.

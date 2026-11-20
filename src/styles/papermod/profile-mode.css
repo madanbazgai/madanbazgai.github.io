@@ -36,14 +36,10 @@
     width: 180px;
     border-radius: 50%;
     margin-bottom: 25px;
-    -webkit-box-shadow: 5px 11px 58px 7px #33333396;
-    -moz-box-shadow: 5px 11px 58px 7px #33333396;
     box-shadow: 5px 11px 58px 7px #33333396;
 }
 
 .dark .profile img {
-    -webkit-box-shadow: 0 0 134px 19px #000000;
-    -moz-box-shadow: 0 0 134px 19px #000000;
     box-shadow: 0 0 134px 19px #000000;
 }
 
@@ -67,7 +63,7 @@
         box-shadow: 0 0 3px hsl(106, 94%, 37%);
     }
     50% {
-        background-color: #36ad11;
+        background-color: #268010;
         box-shadow: 0 0 10px #3aca0e;
     }
     100% {
@@ -110,17 +106,21 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .main {
-        height: 90vh;
-    }
     .main .profile {
-        padding-top: 8rem;
+        padding-top: 4rem;
     }
     .pinned-article {
         width: 300px;
         font-size: 0.9rem;
     }
     .pinned-article time {
-        font-size: 0.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button {
+        animation: none;
+        background-color: #1b7001;
     }
 }

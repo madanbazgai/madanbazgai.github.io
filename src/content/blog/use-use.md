@@ -2,9 +2,9 @@
 title: "'use use'"
 date: 2025-08-30T09:57:36+05:45
 description: "A guide to React 19's use hook: fetch data from promises, read context, and call it conditionally, which other hooks can't do."
-author: "Me"
 categories: ["React"]
-tags: ["React","pinned"]
+tags: ["React"]
+pinned: true
 cover:
   image: "../../assets/images/blogicon/use.png"
   alt: "React use use"

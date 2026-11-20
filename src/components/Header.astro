@@ -2,6 +2,8 @@
 import { MENU, SITE } from "../config";
 
 const path = Astro.url.pathname;
+// A section stays highlighted on its posts too, e.g. "Blog" on /blog/some-post/.
+const isActive = (url: string) => url.startsWith("/") && path.startsWith(url);
 ---
 
 <header class="header">
@@ -14,7 +16,7 @@ const path = Astro.url.pathname;
         MENU.map(({ name, url }) => (
           <li>
             <a href={url} title={name}>
-              <span class:list={{ active: url === path }}>{name}</span>
+              <span class:list={{ active: isActive(url) }}>{name}{url.startsWith("http") && " ↗"}</span>
             </a>
           </li>
         ))

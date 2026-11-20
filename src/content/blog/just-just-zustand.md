@@ -2,9 +2,9 @@
 title: "Just Just Zustand"
 date: 2025-09-08T17:48:29+05:45
 description: "A practical introduction to Zustand: create a typed store, read and update state from React components, and understand the flux pattern behind it."
-author: "Me"
 categories: ["React"]
-tags: ["state manager", "pinned"]
+tags: ["state manager"]
+pinned: true
 cover:
   image: "../../assets/images/blogicon/zustand.jpg"
   alt: "Zustand bear mascot"

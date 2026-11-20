@@ -38,17 +38,13 @@ Add a Markdown file to `src/content/blog/` (the file name is the URL slug):
 ---
 title: "My Post"
 date: 2026-01-01T10:00:00+05:45
-description: "One-sentence summary for Google and link previews (max 160 chars)"
-author: "Me"
+description: "One-sentence summary shown on cards, in Google and in link previews (max 160 chars)"
 categories: ["React"]
-tags: ["react", "pinned"]   # "pinned" lists it on the home page
+tags: ["react"]
+pinned: true            # optional: list it under "Pinned Articles" on the home page
 cover:
   image: "../../assets/images/blogicon/my-post.png"   # relative path, gets optimized
   alt: "Describe the image"
-showReadingTime: true
-showWordCount: true
-showBreadcrumbs: true
-showPostNav: true
 ---
 ```
 

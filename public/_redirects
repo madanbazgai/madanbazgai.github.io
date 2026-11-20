@@ -9,6 +9,7 @@
 /notes/page/*           /notes/                         301
 /tags/:tag/page/*       /tags/:tag/                     301
 /categories/:cat/page/* /categories/:cat/               301
+/tags/pinned/*          /                               301
 
 # Removed posts and their now-empty tags: tell search engines they are gone for good
 /blog/install-and-activate-office-2021/*  /404.html  410

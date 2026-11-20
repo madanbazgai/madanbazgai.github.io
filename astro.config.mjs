@@ -51,6 +51,8 @@ export default defineConfig({
       },
     }),
   ],
+  // Responsive images: correct aspect ratio and a srcset so phones get smaller files.
+  image: { layout: "constrained", responsiveStyles: true },
   markdown: {
     shikiConfig: { theme: "gruvbox-dark-medium" },
   },
@@ -69,6 +71,8 @@ export default defineConfig({
       name: "Geist Mono",
       cssVariable: "--font-geist-mono",
       fallbacks: ["monospace"],
+      weights: [400],
+      styles: ["normal"],
     },
   ],
 });

@@ -2,16 +2,11 @@
 title: "C programming Notes"
 date: 2023-03-16T21:06:40+05:45
 description: "Download unit-wise PDF notes for C programming, units 1 to 9, including I/O operations."
-author: "Me"
 categories: ["Notes"]
 tags: ["c programming"]
 cover:
   image: "../../../assets/images/blogicon/c.avif"
   alt: "C programming logo"
-showReadingTime: true
-showWordCount: true
-showBreadcrumbs: true
-showPostNav: true
 ---
 
 ### Unit-1: Click [ Here👈](/notes/c-programming/c-programming-unit-1.pdf) to download.

@@ -2,16 +2,12 @@
 title: "Tailwind CSS V4 got simpler,lighter and faster."
 date: 2025-01-13T23:03:02+05:45
 description: "What's new in Tailwind CSS v4 (faster builds, CSS-first config, Lightning CSS) and a quick guide to setting it up with Vite."
-author: "Me"
 categories: ["css"]
-tags: ["tailwindcss", "pinned"]
+tags: ["tailwindcss"]
+pinned: true
 cover:
   image: "../../assets/images/blogicon/tailwindcss.png"
   alt: "Tailwind CSS V4 got simpler,lighter and faster."
-showReadingTime: true
-showWordCount: true
-showBreadcrumbs: true
-showPostNav: true
 ---
 
 ![Tailwind CSS](../../assets/images/blogicon/tailwindcss.png)

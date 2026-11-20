@@ -43,7 +43,7 @@ const links = [
 <div class="social-icons">
   {
     links.map(({ title, url, svg }) => (
-      <a href={url} target="_blank" rel="noopener noreferrer me" title={title} set:html={svg} />
+      <a href={url} target={url.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer me" title={title} set:html={svg} />
     ))
   }
 </div>
