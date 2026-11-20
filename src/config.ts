@@ -25,14 +25,7 @@ export const MENU = [
   { name: "Tags", url: "/tags/" },
 ];
 
-export const SECTIONS = {
-  blog: {
-    title: "Blogs",
-    description: "Articles by Madan Bazgai on React, TypeScript, Node.js, Expo, Tailwind CSS and modern web development.",
-  },
-  notes: {
-    title: "Notes",
-    description: "Free unit-wise PDF study notes on C programming, web technology, cyber security and management information systems.",
-  },
-} as const;
-export type Section = keyof typeof SECTIONS;
+export const BLOG = {
+  title: "Blogs",
+  description: "Articles by Madan Bazgai on React, TypeScript, Node.js, Expo, Tailwind CSS and modern web development.",
+};

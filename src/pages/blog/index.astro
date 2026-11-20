@@ -1,0 +1,13 @@
+---
+import PostEntry from "../../components/PostEntry.astro";
+import { BLOG } from "../../config";
+import Base from "../../layouts/Base.astro";
+import { getPosts } from "../../lib/posts";
+
+const posts = await getPosts();
+---
+
+<Base title={BLOG.title} description={BLOG.description} list>
+  <h1 class="sr-only">{BLOG.title}</h1>
+  {posts.map((post) => <PostEntry post={post} />)}
+</Base>

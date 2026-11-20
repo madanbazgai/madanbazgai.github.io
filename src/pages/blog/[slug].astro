@@ -1,7 +1,7 @@
 ---
 import { render } from "astro:content";
 import Toc from "../../components/Toc.astro";
-import { SECTIONS } from "../../config";
+import { BLOG } from "../../config";
 import Base from "../../layouts/Base.astro";
 import { formatDate, getPosts, postUrl, slugify, stats, type Post } from "../../lib/posts";
 import { socialImage } from "../../lib/social-image";
@@ -9,7 +9,7 @@ import { postSchema } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
   return (await getPosts()).map((post) => ({
-    params: { section: post.collection, slug: post.id },
+    params: { slug: post.id },
     props: { post },
   }));
 }
@@ -19,10 +19,10 @@ const { Content, headings } = await render(post);
 const { title, description, date, tags, cover } = post.data;
 const image = await socialImage(cover?.image);
 
-// Prev/next links only exist between blog posts.
-const blog = await getPosts("blog");
-const index = blog.findIndex((p) => p.collection === post.collection && p.id === post.id);
-const [prev, next] = index >= 0 ? [blog[index - 1], blog[index + 1]] : [];
+// Newest first, so "prev" is the newer post and "next" the older one.
+const posts = await getPosts();
+const index = posts.findIndex((p) => p.id === post.id);
+const [prev, next] = [posts[index - 1], posts[index + 1]];
 ---
 
 <Base
@@ -37,13 +37,13 @@ const [prev, next] = index >= 0 ? [blog[index - 1], blog[index + 1]] : [];
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <ol>
           <li><a href="/">Home</a></li>
-          <li><a href={`/${post.collection}/`}>{SECTIONS[post.collection].title}</a></li>
+          <li><a href="/blog/">{BLOG.title}</a></li>
         </ol>
       </nav>
       <h1 class="post-title">{title}</h1>
       <div class="post-meta">
         <time datetime={date.toISOString()}>{formatDate(date)}</time>
-        {post.collection === "blog" && ` · ${stats(post).minutes} min read`}
+        {` · ${stats(post).minutes} min read`}
       </div>
     </header>
     <Toc headings={headings} />

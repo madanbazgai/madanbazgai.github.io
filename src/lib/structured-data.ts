@@ -1,5 +1,5 @@
 // schema.org structured data, so search engines understand who wrote what.
-import { SECTIONS, SITE } from "../config";
+import { BLOG, SITE } from "../config";
 import { postUrl, type Post } from "./posts";
 
 const url = (path: string, site: URL) => new URL(path, site).href;
@@ -36,12 +36,11 @@ export const homeSchema = (site: URL) => ({
 });
 
 export const postSchema = (post: Post, site: URL, image: string) => {
-  const section = SECTIONS[post.collection];
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": post.collection === "blog" ? "BlogPosting" : "Article",
+        "@type": "BlogPosting",
         headline: post.data.title,
         description: post.data.description,
         datePublished: post.data.date.toISOString(),
@@ -56,7 +55,7 @@ export const postSchema = (post: Post, site: URL, image: string) => {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: url("/", site) },
-          { "@type": "ListItem", position: 2, name: section.title, item: url(`/${post.collection}/`, site) },
+          { "@type": "ListItem", position: 2, name: BLOG.title, item: url("/blog/", site) },
           { "@type": "ListItem", position: 3, name: post.data.title },
         ],
       },

@@ -1,19 +1,16 @@
 import { getCollection, type CollectionEntry } from "astro:content";
-import { SECTIONS, type Section } from "../config";
 
-export type Post = CollectionEntry<Section>;
+export type Post = CollectionEntry<"blog">;
 
 // Newest first; posts published at the same moment fall back to title order.
 const compare = (a: Post, b: Post) =>
   b.data.date.valueOf() - a.data.date.valueOf() || a.data.title.localeCompare(b.data.title);
 
-export async function getPosts(section?: Section): Promise<Post[]> {
-  const sections = section ? [section] : (Object.keys(SECTIONS) as Section[]);
-  const posts = await Promise.all(sections.map((s) => getCollection(s)));
-  return posts.flat().sort(compare);
+export async function getPosts(): Promise<Post[]> {
+  return (await getCollection("blog")).sort(compare);
 }
 
-export const postUrl = (post: Post) => `/${post.collection}/${post.id}/`;
+export const postUrl = (post: Post) => `/blog/${post.id}/`;
 
 export const slugify = (term: string) =>
   term.trim().toLowerCase().replace(/\s+/g, "-").replace(/[^\p{L}\p{N}/_-]/gu, "");

@@ -13,9 +13,19 @@
 # Categories were merged into tags
 /categories/*           /tags/                          301
 
-# Notes moved to flat URLs
-/notes/c-porgramming/c-programming/*     /notes/c-programming/   301
-/notes/web-technology/web-technology/*   /notes/web-technology/  301
+# The four notes pages are now sections of /notes/. Exact paths only, so the PDFs keep working.
+/notes/c-porgramming/c-programming/     /notes/#c-programming                301
+/notes/c-programming/                   /notes/#c-programming                301
+/notes/web-technology/web-technology/   /notes/#web-technology               301
+/notes/web-technology/                  /notes/#web-technology               301
+/notes/cybersecurity/                   /notes/#cybersecurity                301
+/notes/management_information_system/   /notes/#management-information-system 301
+
+# Their tag pages went with them
+/tags/c-programming/*                   /notes/#c-programming                301
+/tags/web/*                             /notes/#web-technology               301
+/tags/cybersecurity/*                   /notes/#cybersecurity                301
+/tags/management-information-system/*   /notes/#management-information-system 301
 
 # Tag renamed when categories were merged
 /tags/first/*           /tags/javascript/               301

@@ -30,7 +30,7 @@ const { title, date, description, cover } = post.data;
     <div class="entry-content"><p>{description}</p></div>
     <footer class="entry-footer">
       <time datetime={date.toISOString()}>{formatDate(date)}</time>
-      {post.collection === "blog" && ` · ${stats(post).minutes} min read`}
+      {` · ${stats(post).minutes} min read`}
     </footer>
   </div>
 </article>

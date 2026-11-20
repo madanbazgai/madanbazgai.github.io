@@ -79,9 +79,6 @@ const speculationRules = {
 </html>
 
 <script>
-  navigator.serviceWorker?.register("/sw.js");
-
-  // Caches left behind by the old hand-written service worker.
-  caches?.delete("my-cache");
-  caches?.delete("image-cache");
+  // The service worker only exists in production builds (written by astro.config.mjs).
+  if (import.meta.env.PROD) navigator.serviceWorker?.register("/sw.js");
 </script>

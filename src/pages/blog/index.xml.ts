@@ -7,7 +7,7 @@ const escape = (s: string) =>
 
 // RSS feed of blog posts.
 export async function GET({ site }: APIContext) {
-  const items = (await getPosts("blog")).map((post) => {
+  const items = (await getPosts()).map((post) => {
     const link = new URL(postUrl(post), site).href;
     return `<item><title>${escape(post.data.title)}</title><link>${link}</link><guid>${link}</guid><pubDate>${post.data.date.toUTCString()}</pubDate><description>${escape(post.data.description)}</description></item>`;
   });

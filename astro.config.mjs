@@ -1,7 +1,35 @@
 // @ts-check
 import sitemap from "@astrojs/sitemap";
-import { AstroPWAIntegration } from "@vite-pwa/astro";
+import { createHash } from "node:crypto";
+import { readdir, readFile, writeFile } from "node:fs/promises";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig, fontProviders, svgoOptimizer } from "astro/config";
+
+/**
+ * Writes dist/sw.js from src/service-worker.js, listing every page and asset to precache.
+ * @returns {import("astro").AstroIntegration}
+ */
+const serviceWorker = () => ({
+  name: "service-worker",
+  hooks: {
+    "astro:build:done": async ({ dir }) => {
+      const root = fileURLToPath(dir);
+      const files = (await readdir(root, { recursive: true }))
+        .map((file) => file.replaceAll("\\", "/"))
+        .filter((file) => /\.(html|css|js|woff2|json|webmanifest|ico)$/.test(file) && !["404.html", "sw.js"].includes(file))
+        .sort();
+      const hash = createHash("sha256");
+      for (const file of files) hash.update(file).update(await readFile(join(root, file)));
+      const urls = files.map((file) => `/${file.replace(/(^|\/)index\.html$/, "$1")}`);
+      const template = await readFile(new URL("./src/service-worker.js", import.meta.url), "utf8");
+      const sw = template
+        .replace("__VERSION__", hash.digest("hex").slice(0, 12))
+        .replace('["__PRECACHE__"]', JSON.stringify(urls));
+      await writeFile(join(root, "sw.js"), sw);
+    },
+  },
+});
 
 export default defineConfig({
   site: "https://madanbajgai.com.np",
@@ -9,47 +37,7 @@ export default defineConfig({
   integrations: [
     // Only pages worth ranking: tag lists and search are marked noindex.
     sitemap({ filter: (page) => !/\/(tags|search)\//.test(new URL(page).pathname) }),
-    AstroPWAIntegration({
-      registerType: "autoUpdate",
-      injectRegister: false,
-      includeManifestIcons: false,
-      includeAssets: ["favicon.ico"],
-      manifest: {
-        id: "/",
-        name: "Madan Bazgai",
-        short_name: "Madan Bazgai",
-        description: "My personal portfolio & blog app",
-        start_url: "/",
-        display: "standalone",
-        orientation: "portrait-primary",
-        theme_color: "#000",
-        background_color: "#000",
-        icons: [
-          { src: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png", purpose: "any" },
-          { src: "/icons/icon-512x512.png", sizes: "512x512", type: "image/png", purpose: "any" },
-          { src: "/icons/icon-512x512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
-        ],
-      },
-      generateSW: {
-        // Precache every page and the app shell; images and note PDFs are cached when first viewed.
-        globPatterns: ["**/*.{html,css,js,woff2,json}"],
-        globIgnores: ["404.html"],
-        navigateFallback: null,
-        cleanupOutdatedCaches: true,
-        runtimeCaching: [
-          {
-            urlPattern: ({ request }) => request.destination === "image",
-            handler: "CacheFirst",
-            options: { cacheName: "images", expiration: { maxEntries: 100, maxAgeSeconds: 30 * 24 * 60 * 60 } },
-          },
-          {
-            urlPattern: ({ url }) => url.pathname.endsWith(".pdf"),
-            handler: "CacheFirst",
-            options: { cacheName: "notes", expiration: { maxEntries: 50 } },
-          },
-        ],
-      },
-    }),
+    serviceWorker(),
   ],
   // Minify the SVG icons imported from src/icons.
   experimental: { svgOptimizer: svgoOptimizer() },

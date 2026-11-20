@@ -16,5 +16,4 @@ const schema = ({ image }: SchemaContext) =>
 
 export const collections = {
   blog: defineCollection({ loader: glob({ base: "./src/content/blog", pattern: "**/*.md" }), schema }),
-  notes: defineCollection({ loader: glob({ base: "./src/content/notes", pattern: "**/*.md" }), schema }),
 };
