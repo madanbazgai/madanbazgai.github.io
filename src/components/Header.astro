@@ -1,5 +1,8 @@
 ---
 import { MENU, SITE } from "../config";
+import Moon from "../icons/moon.svg";
+import SearchIcon from "../icons/search.svg";
+import Sun from "../icons/sun.svg";
 
 const path = Astro.url.pathname;
 // A section stays highlighted on its posts too, e.g. "Blog" on /blog/some-post/.
@@ -9,7 +12,7 @@ const isActive = (url: string) => url.startsWith("/") && path.startsWith(url);
 <header class="header">
   <nav class="nav">
     <div class="logo">
-      <a href="/" accesskey="h" title={`${SITE.title} (Alt + H)`}>{SITE.title}</a>
+      <a href="/" title={SITE.title}>{SITE.title}</a>
     </div>
     <ul id="menu">
       {
@@ -22,34 +25,16 @@ const isActive = (url: string) => url.startsWith("/") && path.startsWith(url);
         ))
       }
       <li>
-        <a href="/search/" title="Search (Alt + /)" accesskey="/" aria-label="Search">
+        <a href="/search/" title="Search" aria-label="Search">
           <span class:list={{ active: path === "/search/" }}>
-            <svg class="search-icon" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
+            <SearchIcon class="search-icon" width="25" height="25" />
           </span>
         </a>
       </li>
       <li>
-        <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle dark mode">
-          <svg id="moon" width="26" height="26" viewBox="0 0 24 24" fill="black" stroke="black" stroke-width="3"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-          <svg id="sun" width="26" height="26" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="3"
-            stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
+        <button id="theme-toggle" title="Toggle dark mode" aria-label="Dark mode" aria-pressed="false">
+          <Moon id="moon" width="26" height="26" />
+          <Sun id="sun" width="26" height="26" />
         </button>
       </li>
     </ul>
@@ -57,9 +42,13 @@ const isActive = (url: string) => url.startsWith("/") && path.startsWith(url);
 </header>
 
 <script>
-  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+  const toggle = document.getElementById("theme-toggle")!;
+  const sync = () => toggle.setAttribute("aria-pressed", String(document.body.classList.contains("dark")));
+  sync();
+  toggle.addEventListener("click", () => {
     const dark = document.body.classList.toggle("dark");
     localStorage.setItem("pref-theme", dark ? "dark" : "light");
+    sync();
   });
 </script>
 
@@ -113,7 +102,7 @@ const isActive = (url: string) => url.startsWith("/") && path.startsWith(url);
     }
   }
 
-  .search-icon {
+  #menu :global(.search-icon) {
     margin-top: 18px;
   }
 
@@ -122,8 +111,8 @@ const isActive = (url: string) => url.startsWith("/") && path.startsWith(url);
     margin: auto 15px;
   }
 
-  :global(body.dark) #moon,
-  :global(body:not(.dark)) #sun {
+  :global(body.dark #moon),
+  :global(body:not(.dark) #sun) {
     display: none;
   }
 
@@ -145,9 +134,15 @@ const isActive = (url: string) => url.startsWith("/") && path.startsWith(url);
       li + li {
         margin-inline-start: 12px;
       }
+
+      /* 24px tap targets without changing the layout */
+      a {
+        padding-block: 4px;
+        margin-block: -4px;
+      }
     }
 
-    .search-icon {
+    #menu :global(.search-icon) {
       margin-top: 0;
     }
 

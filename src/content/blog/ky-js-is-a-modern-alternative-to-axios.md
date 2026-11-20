@@ -2,8 +2,7 @@
 title: "Ky.js: A Delightful Alternative to Axios"
 date: 2025-01-15T21:57:58+05:45
 description: "Ky.js is a tiny HTTP client built on fetch. Compare it with Axios and learn reusable instances, hooks, retries and error handling with examples."
-categories: ["Javascript"]
-tags: ["first"]
+tags: ["javascript"]
 pinned: true
 cover:
   image: "../../assets/images/blogicon/kyvsaxios.png"
@@ -14,7 +13,7 @@ cover:
 
 ![Ky vs Axios](../../assets/images/blogicon/kyvsaxios.png)
 
-### [Jump to code 🔻](#installation)
+[Jump to code 🔻](#installation)
 
 
 

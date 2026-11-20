@@ -21,11 +21,13 @@ src/
   content/blog/        blog posts (Markdown)
   content/notes/       notes (Markdown)
   lib/posts.ts         sorting, summaries, taxonomies, dates
-  lib/schema.ts        structured data (JSON-LD) for search engines
+  lib/structured-data.ts  JSON-LD for search engines
+  lib/social-image.ts  link-preview image helper
   layouts/Base.astro   page shell (head, header, footer)
   components/          header, footer, post card, TOC, share buttons... (each with its own scoped <style>)
-  pages/               routes (/, /blog/, /notes/, /tags/, /categories/, /search/, feeds)
+  pages/               routes (/, /blog/, /notes/, /tags/, /search/, feeds)
   assets/              images and fonts (optimized at build time)
+  icons/               SVG icons, imported as components
   styles/global.css    design tokens (light/dark), reset, base layout, article typography
 public/                static files served as-is (note PDFs, icons, redirects, headers)
 ```
@@ -39,7 +41,6 @@ Add a Markdown file to `src/content/blog/` (the file name is the URL slug):
 title: "My Post"
 date: 2026-01-01T10:00:00+05:45
 description: "One-sentence summary shown on cards, in Google and in link previews (max 160 chars)"
-categories: ["React"]
 tags: ["react"]
 pinned: true            # optional: list it under "Pinned Articles" on the home page
 cover:
@@ -61,7 +62,7 @@ Test it with `pnpm build && pnpm preview` (the service worker is not active in `
 
 Every page gets a title, description, canonical URL and Open Graph/Twitter tags (`src/layouts/Base.astro`).
 Posts also get `BlogPosting` + breadcrumb structured data, and the home page `Person` + `WebSite`
-(`src/lib/schema.ts`). Tag, category and search pages are `noindex` and left out of the sitemap.
+(`src/lib/schema.ts`). Tag and search pages are `noindex` and left out of the sitemap.
 Old Hugo URLs are redirected in `public/_redirects`.
 
 ## Deploy

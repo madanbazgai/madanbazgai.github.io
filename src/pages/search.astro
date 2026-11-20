@@ -4,10 +4,10 @@ import Base from "../layouts/Base.astro";
 
 <Base title="Search" noindex list>
   <h1 class="sr-only">Search</h1>
-  <div id="searchbox">
-    <input id="searchInput" autofocus placeholder="Search any posts" aria-label="search" type="search" autocomplete="off" />
-    <ul id="searchResults" aria-label="search results" aria-live="polite"></ul>
-  </div>
+  <search id="searchbox">
+    <input id="searchInput" autofocus placeholder="Search any posts" aria-label="Search posts" type="search" autocomplete="off" />
+    <ul id="searchResults" aria-label="Search results" aria-live="polite"></ul>
+  </search>
 </Base>
 
 <script>
@@ -18,47 +18,33 @@ import Base from "../layouts/Base.astro";
   const items: Item[] = await (await fetch("/index.json")).json();
 
   // Every word of the query must appear in the post; title matches come first.
-  const find = (query: string) => {
-    const words = query.toLowerCase().split(/\s+/).filter(Boolean);
-    if (!words.length) return [];
+  const find = (words: string[]) => {
     const has = (s: string) => words.every((w) => s.toLowerCase().includes(w));
     return items.filter((i) => has(`${i.title} ${i.text}`)).sort((a, b) => +has(b.title) - +has(a.title));
   };
 
-  const search = () => {
-    results.replaceChildren(
-      ...find(input.value).map((item) => {
-        const li = Object.assign(document.createElement("li"), { className: "post-entry" });
-        const header = Object.assign(document.createElement("header"), {
-          className: "entry-header",
-          textContent: `${item.title} »`,
-        });
-        const link = Object.assign(document.createElement("a"), { href: item.url, ariaLabel: item.title });
-        li.append(header, link);
-        return li;
-      }),
-    );
+  const item = (text: string, url?: string) => {
+    const li = document.createElement("li");
+    li.append(Object.assign(document.createElement("header"), { textContent: text }));
+    if (url) li.append(Object.assign(document.createElement("a"), { href: url, ariaLabel: text }));
+    else li.className = "empty";
+    return li;
   };
 
-  input.addEventListener("input", search);
+  const search = () => {
+    const query = input.value.trim();
+    const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    const found = words.length ? find(words) : [];
+    results.replaceChildren(
+      ...(words.length && !found.length ? [item(`No posts match “${query}”`)] : found.map((p) => item(`${p.title} »`, p.url))),
+    );
+    // Keep the query in the URL so searches can be shared and survive reloads.
+    history.replaceState(null, "", query ? `?q=${encodeURIComponent(query)}` : location.pathname);
+  };
 
-  // Keyboard: arrows move between the input and results, Escape clears.
-  document.addEventListener("keydown", (event) => {
-    const targets: HTMLElement[] = [input, ...results.querySelectorAll("a")];
-    const current = targets.indexOf(document.activeElement as HTMLElement);
-    if (event.key === "Escape") {
-      input.value = "";
-      search();
-      input.focus();
-    } else if (current >= 0 && (event.key === "ArrowDown" || event.key === "ArrowUp")) {
-      event.preventDefault();
-      const step = event.key === "ArrowDown" ? 1 : -1;
-      const target = targets[Math.min(Math.max(current + step, 0), targets.length - 1)];
-      target.focus();
-      results.querySelector(".focus")?.classList.remove("focus");
-      if (target !== input) target.parentElement!.classList.add("focus");
-    }
-  });
+  input.value = new URLSearchParams(location.search).get("q") ?? "";
+  input.addEventListener("input", search);
+  search();
 </script>
 
 <style>
@@ -95,12 +81,16 @@ import Base from "../layouts/Base.astro";
   }
 
   #searchResults :global(li:active),
-  #searchResults :global(.focus) {
+  #searchResults :global(li:has(a:focus-visible)) {
     transform: scale(0.98);
   }
 
-  #searchResults :global(.focus) {
+  #searchResults :global(li:has(a:focus-visible)) {
     border: 2px solid var(--tertiary);
+  }
+
+  #searchResults :global(li.empty) {
+    color: var(--secondary);
   }
 
   #searchResults :global(a) {
@@ -110,7 +100,7 @@ import Base from "../layouts/Base.astro";
 
   @media (prefers-reduced-motion) {
     #searchResults :global(li:active),
-    #searchResults :global(.focus) {
+    #searchResults :global(li:has(a:focus-visible)) {
       transform: none;
     }
   }

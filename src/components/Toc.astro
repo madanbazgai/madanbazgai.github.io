@@ -1,50 +1,31 @@
 ---
 import type { MarkdownHeading } from "astro";
 
-type Node = { heading: MarkdownHeading; children: Node[] };
-type Props = { headings: MarkdownHeading[] } | { nodes: Node[] };
+interface Props {
+  headings: MarkdownHeading[];
+}
 
-// Nest headings by depth: each heading becomes a child of the closest shallower one.
-const toTree = (headings: MarkdownHeading[]) => {
-  const root: Node[] = [];
-  const stack: Node[] = [];
-  for (const heading of headings) {
-    const node: Node = { heading, children: [] };
-    while (stack.length && stack.at(-1)!.heading.depth >= heading.depth) stack.pop();
-    (stack.at(-1)?.children ?? root).push(node);
-    stack.push(node);
-  }
-  return root;
-};
-
-const props = Astro.props;
+const { headings } = Astro.props;
+// Indent each entry by its depth relative to the shallowest heading.
+const top = Math.min(...headings.map((h) => h.depth));
 ---
 
 {
-  "nodes" in props ? (
-    <ul>
-      {props.nodes.map(({ heading, children }) => (
-        <li>
-          <a href={`#${heading.slug}`} aria-label={heading.text}>
-            {heading.text}
-          </a>
-          {children.length > 0 && <Astro.self nodes={children} />}
-        </li>
-      ))}
-    </ul>
-  ) : (
-    props.headings.length > 0 && (
-      <div class="toc">
-        <details>
-          <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-          </summary>
-          <div class="inner">
-            <Astro.self nodes={toTree(props.headings)} />
-          </div>
-        </details>
-      </div>
-    )
+  headings.length > 0 && (
+    <nav class="toc" aria-label="Table of contents">
+      <details>
+        <summary>
+          <span class="details">Table of Contents</span>
+        </summary>
+        <ul class="inner">
+          {headings.map(({ depth, slug, text }) => (
+            <li style={`--level: ${depth - top}`}>
+              <a href={`#${slug}`}>{text}</a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    </nav>
   )
 }
 
@@ -80,8 +61,8 @@ const props = Astro.props;
     padding: 10px 20px;
   }
 
-  li ul {
-    margin-inline-start: var(--gap);
+  li {
+    margin-inline-start: calc(var(--level) * var(--gap));
   }
 
   a:hover {

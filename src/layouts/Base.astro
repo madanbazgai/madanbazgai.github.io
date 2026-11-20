@@ -1,10 +1,10 @@
 ---
 import type { ImageMetadata } from "astro";
-import { Font, getImage } from "astro:assets";
-import profile from "../assets/madmax.jpg";
+import { Font } from "astro:assets";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { SITE } from "../config";
+import { socialImage } from "../lib/social-image";
 import "../styles/global.css";
 
 interface Props {
@@ -23,11 +23,12 @@ interface Props {
 const { title, description = SITE.description, image, noindex = false, article, jsonLd, list = false } = Astro.props;
 const fullTitle = title ? `${title} | ${SITE.title}` : `${SITE.title} | ${SITE.tagline}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-// Social networks don't all read AVIF/WebP, so preview images are converted to JPEG.
-const source = image ?? profile;
-const preview =
-  typeof source === "string" ? source : (await getImage({ src: source, format: "jpg", width: Math.min(source.width, 1200) })).src;
+const preview = await socialImage(image);
 const previewUrl = new URL(preview, Astro.site);
+// Prerender same-site pages when a link is hovered (~200ms) or pressed; native, no JavaScript.
+const speculationRules = {
+  prerender: [{ where: { and: [{ href_matches: "/*" }, { not: { href_matches: "/*.pdf" } }] }, eagerness: "moderate" }],
+};
 ---
 
 <!doctype html>
@@ -61,6 +62,7 @@ const previewUrl = new URL(preview, Astro.site);
     <meta name="twitter:site" content={SITE.twitter} />
     <meta name="twitter:creator" content={SITE.twitter} />
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <script is:inline type="speculationrules" set:html={JSON.stringify(speculationRules)} />
     <Font cssVariable="--font-madmax" preload />
     <Font cssVariable="--font-geist-mono" />
     <noscript><style>#theme-toggle, .top-link { display: none; }</style></noscript>

@@ -8,7 +8,6 @@ const schema = ({ image }: SchemaContext) =>
     date: z.coerce.date(),
     // Used for search results and link previews, so keep it a real sentence under 160 characters.
     description: z.string().max(160),
-    categories: z.array(z.string()).default([]),
     tags: z.array(z.string()).default([]),
     cover: z.object({ image: image().or(z.url()), alt: z.string() }).optional(),
     // Listed under "Pinned Articles" on the home page.

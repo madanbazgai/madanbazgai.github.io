@@ -2,8 +2,7 @@
 title: "Nodejs Simplified With Native Typescript and Watch Mode Support"
 date: 2025-05-19T15:07:37+05:45
 description: "Run TypeScript files directly in Node.js 22.6+ with no extra dependencies, use the built-in watch mode, and start from a recommended tsconfig."
-categories: ["Backend"]
-tags: ["nodejs"]
+tags: ["nodejs", "typescript"]
 cover:
   image: "../../assets/images/blogicon/nodejs.png"
   alt: "Node.js with TypeScript"

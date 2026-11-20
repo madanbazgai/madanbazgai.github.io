@@ -1,0 +1,16 @@
+---
+import PostEntry from "../../components/PostEntry.astro";
+import Base from "../../layouts/Base.astro";
+import { getTags, type Post } from "../../lib/posts";
+
+export async function getStaticPaths() {
+  return (await getTags()).map(({ slug, name, posts }) => ({ params: { tag: slug }, props: { name, posts } }));
+}
+
+const { name, posts } = Astro.props as { name: string; posts: Post[] };
+---
+
+<Base title={name} noindex list>
+  <h1 class="sr-only">{name}</h1>
+  {posts.map((post) => <PostEntry post={post} tagEntry />)}
+</Base>

@@ -2,8 +2,6 @@
 title: "Welcome to My Portfolio/Blog App"
 date: 2022-09-05T17:22:24+05:45
 description: "About this portfolio and blog: built with Astro as a fast, installable Progressive Web App with offline support, dark mode and search."
-categories: ["Blog"]
-tags: []
 pinned: true
 cover:
   image: "../../assets/images/blogicon/welcome-cover.webp"

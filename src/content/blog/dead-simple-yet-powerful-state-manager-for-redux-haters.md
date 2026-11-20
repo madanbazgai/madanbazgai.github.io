@@ -2,8 +2,7 @@
 title: "Dead Simple Yet Powerful Global State Manager for Redux Haters"
 date: 2025-08-14T11:19:36+05:45
 description: "Jotai is a tiny atomic state manager for React. Share global state like a theme toggle in a few lines, without Redux boilerplate."
-categories: ["React"]
-tags: ["state manager"]
+tags: ["react", "state manager"]
 pinned: true
 cover:
   image: "../../assets/images/blogicon/jotai.png"

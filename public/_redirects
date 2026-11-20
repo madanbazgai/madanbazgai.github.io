@@ -8,15 +8,24 @@
 /blog/page/*            /blog/                          301
 /notes/page/*           /notes/                         301
 /tags/:tag/page/*       /tags/:tag/                     301
-/categories/:cat/page/* /categories/:cat/               301
 /tags/pinned/*          /                               301
+
+# Categories were merged into tags
+/categories/*           /tags/                          301
+
+# Notes moved to flat URLs
+/notes/c-porgramming/c-programming/*     /notes/c-programming/   301
+/notes/web-technology/web-technology/*   /notes/web-technology/  301
+
+# Tag renamed when categories were merged
+/tags/first/*           /tags/javascript/               301
 
 # Removed posts and their now-empty tags: tell search engines they are gone for good
 /blog/install-and-activate-office-2021/*  /404.html  410
 /blog/install-and-activate-windows-11/*   /404.html  410
 /activate-office.bat                      /404.html  410
 /activate-windows.bat                     /404.html  410
+/minorproject/*                           /404.html  410
 /tags/windows/*                           /404.html  410
 /tags/office/*                            /404.html  410
 /tags/installation/*                      /404.html  410
-/categories/windows/*                     /404.html  410

@@ -1,5 +1,6 @@
 ---
 import { SITE } from "../config";
+import ArrowUp from "../icons/arrow-up.svg";
 ---
 
 <footer class="footer">
@@ -9,19 +10,10 @@ import { SITE } from "../config";
     <a href={SITE.github} rel="noreferrer" target="_blank">MadanBazgai</a>
   </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-  <svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"></path></svg>
+<a href="#top" aria-label="Go to top" title="Go to top" class="top-link">
+  <ArrowUp />
 </a>
 
-<script>
-  const topLink = document.getElementById("top-link")!;
-  const toggleTopLink = () => {
-    const show = scrollY > 800;
-    topLink.style.visibility = show ? "visible" : "hidden";
-    topLink.style.opacity = show ? "1" : "0";
-  };
-  addEventListener("scroll", toggleTopLink, { passive: true });
-</script>
 
 <style>
   .footer,
@@ -60,8 +52,10 @@ import { SITE } from "../config";
     }
   }
 
+  /* Fades in after scrolling 700–800px, driven by CSS alone. */
   .top-link {
     visibility: hidden;
+    opacity: 0;
     position: fixed;
     bottom: 60px;
     right: 30px;
@@ -71,9 +65,12 @@ import { SITE } from "../config";
     padding: 12px;
     background: var(--tertiary);
     border-radius: 64px;
-    transition:
-      visibility 0.5s,
-      opacity 0.8s linear;
+    /* Without scroll-driven animation support this runs instantly, leaving the button visible. */
+    animation: reveal linear both;
+
+    :global(svg) {
+      display: block;
+    }
 
     &:hover {
       color: var(--primary);
@@ -83,6 +80,21 @@ import { SITE } from "../config";
   @media (max-width: 900px) {
     :global(.list) .top-link {
       transform: translateY(-5rem);
+    }
+  }
+
+  /* Kept in its own rule so the minifier can't fold it into the animation shorthand. */
+  @supports (animation-timeline: scroll()) {
+    .top-link {
+      animation-timeline: scroll(root);
+      animation-range: 700px 800px;
+    }
+  }
+
+  @keyframes reveal {
+    to {
+      visibility: visible;
+      opacity: 1;
     }
   }
 </style>

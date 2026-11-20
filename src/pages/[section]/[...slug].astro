@@ -1,12 +1,11 @@
 ---
-import { getImage } from "astro:assets";
 import { render } from "astro:content";
-import profile from "../../assets/madmax.jpg";
 import Toc from "../../components/Toc.astro";
 import { SECTIONS } from "../../config";
 import Base from "../../layouts/Base.astro";
 import { formatDate, getPosts, postUrl, slugify, stats, type Post } from "../../lib/posts";
-import { postSchema } from "../../lib/schema";
+import { socialImage } from "../../lib/social-image";
+import { postSchema } from "../../lib/structured-data";
 
 export async function getStaticPaths() {
   return (await getPosts()).map((post) => ({
@@ -18,9 +17,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props as { post: Post };
 const { Content, headings } = await render(post);
 const { title, description, date, tags, cover } = post.data;
-const source = cover?.image ?? profile;
-const image =
-  typeof source === "string" ? source : (await getImage({ src: source, format: "jpg", width: Math.min(source.width, 1200) })).src;
+const image = await socialImage(cover?.image);
 
 // Prev/next links only exist between blog posts.
 const blog = await getPosts("blog");
@@ -37,9 +34,12 @@ const [prev, next] = index >= 0 ? [blog[index - 1], blog[index + 1]] : [];
 >
   <article class="post-single">
     <header class="post-header">
-      <div class="breadcrumbs">
-        <a href="/">Home</a>&nbsp;»&nbsp;<a href={`/${post.collection}/`}>{SECTIONS[post.collection].title}</a>
-      </div>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href={`/${post.collection}/`}>{SECTIONS[post.collection].title}</a></li>
+        </ol>
+      </nav>
       <h1 class="post-title">{title}</h1>
       <div class="post-meta">
         <time datetime={date.toISOString()}>{formatDate(date)}</time>
@@ -93,8 +93,21 @@ const [prev, next] = index >= 0 ? [blog[index - 1], blog[index + 1]] : [];
     font-size: 14px;
   }
 
-  .breadcrumbs a {
-    font-size: 16px;
+  .breadcrumbs {
+    ol {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li + li::before {
+      content: "\00a0»\00a0";
+    }
+
+    a {
+      font-size: 16px;
+    }
   }
 
   .post-title {

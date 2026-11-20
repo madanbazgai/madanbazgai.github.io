@@ -24,14 +24,15 @@ const { title, date, description, cover } = post.data;
     )
   }
   <div class="article-content">
-    <header class="entry-header"><h2>{title}</h2></header>
+    <header class="entry-header">
+      <h2><a href={postUrl(post)}>{title}</a></h2>
+    </header>
     <div class="entry-content"><p>{description}</p></div>
     <footer class="entry-footer">
       <time datetime={date.toISOString()}>{formatDate(date)}</time>
       {post.collection === "blog" && ` · ${stats(post).minutes} min read`}
     </footer>
   </div>
-  <a class="entry-link" aria-label={`post link to ${title}`} href={postUrl(post)}></a>
 </article>
 
 <style>
@@ -110,7 +111,9 @@ const { title, date, description, cover } = post.data;
     font-size: 10px;
   }
 
-  .entry-link {
+  /* The title link covers the whole card, so the card is clickable but announced by its title. */
+  h2 a::after {
+    content: "";
     position: absolute;
     inset: 0;
   }

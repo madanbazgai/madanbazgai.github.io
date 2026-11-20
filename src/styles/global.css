@@ -39,10 +39,11 @@
     }
   }
 
-  body {
+  /* Set on the root so the page scrollbar follows the theme too. */
+  :root {
     color-scheme: light;
 
-    &.dark {
+    &:has(body.dark) {
       color-scheme: dark;
     }
   }
@@ -197,34 +198,11 @@
   }
 
   /* Scrollbars */
-  ::-webkit-scrollbar-track {
-    background: none;
-  }
+  :root {
+    scrollbar-color: var(--tertiary) var(--theme);
 
-  ::-webkit-scrollbar-thumb {
-    background: var(--tertiary);
-    border: 5px solid var(--theme);
-    border-radius: var(--radius);
-
-    &:hover {
-      background: var(--secondary);
-    }
-  }
-
-  .list:not(.dark) {
-    &::-webkit-scrollbar-track {
-      background: var(--code-bg);
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-color: var(--code-bg);
-    }
-  }
-
-  @media (min-width: 768px) {
-    ::-webkit-scrollbar {
-      width: 19px;
-      height: 11px;
+    &:has(body.list) {
+      scrollbar-color: var(--tertiary) var(--list-bg);
     }
   }
 }
@@ -371,6 +349,7 @@
       border: 1px solid var(--code-block-border);
       border-radius: var(--radius);
       overflow-x: auto;
+      scrollbar-width: thin;
       word-break: break-all;
     }
 
@@ -423,13 +402,5 @@
       margin: 1rem 0;
     }
 
-    ::-webkit-scrollbar-thumb {
-      border: 2px solid var(--hljs-bg);
-      background: rgb(113, 113, 117);
-
-      &:hover {
-        background: rgb(163, 163, 165);
-      }
-    }
   }
 }

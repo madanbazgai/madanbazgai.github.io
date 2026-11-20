@@ -26,6 +26,11 @@ export const homeSchema = (site: URL) => ({
       url: url("/", site),
       inLanguage: "en",
       publisher: { "@id": url("/#person", site) },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${url("/search/", site)}?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
     },
   ],
 });

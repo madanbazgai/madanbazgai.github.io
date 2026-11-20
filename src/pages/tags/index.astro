@@ -1,5 +1,48 @@
 ---
-import Terms from "../../components/Terms.astro";
+import Base from "../../layouts/Base.astro";
+import { getTags } from "../../lib/posts";
+
+const tags = await getTags();
 ---
 
-<Terms taxonomy="tags" title="Tags" />
+<Base title="Tags" noindex list>
+  <h1 class="sr-only">Tags</h1>
+  <ul class="terms-tags">
+    {
+      tags.map(({ slug, name, posts }) => (
+        <li>
+          <a href={`/tags/${slug}/`}>
+            {`${name} `}
+            <sup><strong><sup>{posts.length}</sup></strong></sup>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
+
+<style>
+  li {
+    display: inline-block;
+    margin: 10px;
+    font-weight: 500;
+  }
+
+  a {
+    display: block;
+    padding: 3px 10px;
+    background: var(--tertiary);
+    border-radius: 6px;
+    transition: transform 0.1s;
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    @media (prefers-reduced-motion) {
+      &:active {
+        transform: none;
+      }
+    }
+  }
+</style>

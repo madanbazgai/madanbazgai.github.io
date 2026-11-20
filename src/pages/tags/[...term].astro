@@ -1,8 +1,0 @@
----
-import TermPosts from "../../components/TermPosts.astro";
-import { termPaths } from "../../lib/posts";
-
-export const getStaticPaths = () => termPaths("tags");
----
-
-<TermPosts {...Astro.props} />

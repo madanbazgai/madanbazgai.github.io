@@ -2,7 +2,6 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import { SECTIONS, type Section } from "../config";
 
 export type Post = CollectionEntry<Section>;
-export type Taxonomy = "tags" | "categories";
 
 // Newest first; posts published at the same moment fall back to title order.
 const compare = (a: Post, b: Post) =>
@@ -31,20 +30,17 @@ export function stats(post: Post) {
   return { text, minutes: Math.ceil(text.split(" ").length / 213) };
 }
 
-export async function getTerms(taxonomy: Taxonomy) {
-  const terms = new Map<string, { slug: string; name: string; posts: Post[] }>();
+export async function getTags() {
+  const tags = new Map<string, { slug: string; name: string; posts: Post[] }>();
   for (const post of await getPosts()) {
-    for (const name of post.data[taxonomy]) {
+    for (const name of post.data.tags) {
       const slug = slugify(name);
-      if (!terms.has(slug)) terms.set(slug, { slug, name, posts: [] });
-      terms.get(slug)!.posts.push(post);
+      if (!tags.has(slug)) tags.set(slug, { slug, name, posts: [] });
+      tags.get(slug)!.posts.push(post);
     }
   }
-  return [...terms.values()].sort((a, b) => a.slug.localeCompare(b.slug));
+  return [...tags.values()].sort((a, b) => a.slug.localeCompare(b.slug));
 }
-
-export const termPaths = async (taxonomy: Taxonomy) =>
-  (await getTerms(taxonomy)).map(({ slug, name, posts }) => ({ params: { term: slug }, props: { name, posts } }));
 
 const date = (options: Intl.DateTimeFormatOptions) =>
   new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Kathmandu", ...options });

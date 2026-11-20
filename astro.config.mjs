@@ -1,14 +1,14 @@
 // @ts-check
 import sitemap from "@astrojs/sitemap";
 import { AstroPWAIntegration } from "@vite-pwa/astro";
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, fontProviders, svgoOptimizer } from "astro/config";
 
 export default defineConfig({
   site: "https://madanbajgai.com.np",
   trailingSlash: "always",
   integrations: [
-    // Only pages worth ranking: tag/category lists and search are marked noindex.
-    sitemap({ filter: (page) => !/\/(tags|categories|search)\//.test(new URL(page).pathname) }),
+    // Only pages worth ranking: tag lists and search are marked noindex.
+    sitemap({ filter: (page) => !/\/(tags|search)\//.test(new URL(page).pathname) }),
     AstroPWAIntegration({
       registerType: "autoUpdate",
       injectRegister: false,
@@ -51,6 +51,8 @@ export default defineConfig({
       },
     }),
   ],
+  // Minify the SVG icons imported from src/icons.
+  experimental: { svgOptimizer: svgoOptimizer() },
   // Responsive images: correct aspect ratio and a srcset so phones get smaller files.
   image: { layout: "constrained", responsiveStyles: true },
   markdown: {
