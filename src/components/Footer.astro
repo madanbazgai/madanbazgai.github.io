@@ -1,0 +1,24 @@
+---
+import { SITE } from "../config";
+---
+
+<footer class="footer">
+  <span>&copy; {new Date().getFullYear()}</span>
+  <span>
+    Designed & Developed by{" "}
+    <a href={SITE.github} rel="noopener noreferrer" target="_blank">MadanBazgai</a>
+  </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+  <svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"></path></svg>
+</a>
+
+<script>
+  const topLink = document.getElementById("top-link")!;
+  const toggleTopLink = () => {
+    const show = scrollY > 800;
+    topLink.style.visibility = show ? "visible" : "hidden";
+    topLink.style.opacity = show ? "1" : "0";
+  };
+  addEventListener("scroll", toggleTopLink, { passive: true });
+</script>

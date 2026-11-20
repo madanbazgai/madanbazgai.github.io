@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://madanbajgai.com.np/sitemap-index.xml

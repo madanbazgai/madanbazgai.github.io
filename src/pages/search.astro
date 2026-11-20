@@ -1,0 +1,62 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Search" noindex list>
+  <h1 class="sr-only">Search</h1>
+  <div id="searchbox">
+    <input id="searchInput" autofocus placeholder="Search any posts" aria-label="search" type="search" autocomplete="off" />
+    <ul id="searchResults" aria-label="search results"></ul>
+  </div>
+</Base>
+
+<script>
+  type Item = { title: string; url: string; text: string };
+
+  const input = document.getElementById("searchInput") as HTMLInputElement;
+  const results = document.getElementById("searchResults")!;
+  const items: Item[] = await (await fetch("/index.json")).json();
+
+  // Every word of the query must appear in the post; title matches come first.
+  const find = (query: string) => {
+    const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    if (!words.length) return [];
+    const has = (s: string) => words.every((w) => s.toLowerCase().includes(w));
+    return items.filter((i) => has(`${i.title} ${i.text}`)).sort((a, b) => +has(b.title) - +has(a.title));
+  };
+
+  const search = () => {
+    results.replaceChildren(
+      ...find(input.value).map((item) => {
+        const li = Object.assign(document.createElement("li"), { className: "post-entry" });
+        const header = Object.assign(document.createElement("header"), {
+          className: "entry-header",
+          textContent: `${item.title} »`,
+        });
+        const link = Object.assign(document.createElement("a"), { href: item.url, ariaLabel: item.title });
+        li.append(header, link);
+        return li;
+      }),
+    );
+  };
+
+  input.addEventListener("input", search);
+
+  // Keyboard: arrows move between the input and results, Escape clears.
+  document.addEventListener("keydown", (event) => {
+    const targets: HTMLElement[] = [input, ...results.querySelectorAll("a")];
+    const current = targets.indexOf(document.activeElement as HTMLElement);
+    if (event.key === "Escape") {
+      input.value = "";
+      search();
+      input.focus();
+    } else if (current >= 0 && (event.key === "ArrowDown" || event.key === "ArrowUp")) {
+      event.preventDefault();
+      const step = event.key === "ArrowDown" ? 1 : -1;
+      const target = targets[Math.min(Math.max(current + step, 0), targets.length - 1)];
+      target.focus();
+      results.querySelector(".focus")?.classList.remove("focus");
+      if (target !== input) target.parentElement!.classList.add("focus");
+    }
+  });
+</script>

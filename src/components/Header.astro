@@ -1,0 +1,62 @@
+---
+import { MENU, SITE } from "../config";
+
+const path = Astro.url.pathname;
+---
+
+<header class="header">
+  <nav class="nav">
+    <div class="logo">
+      <a href="/" accesskey="h" title={`${SITE.title} (Alt + H)`}>{SITE.title}</a>
+    </div>
+    <ul id="menu">
+      {
+        MENU.map(({ name, url }) => (
+          <li>
+            <a href={url} title={name}>
+              <span class:list={{ active: url === path }}>{name}</span>
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a href="/search/" title="Search (Alt + /)" accesskey="/" aria-label="Search">
+          <span class:list={{ active: path === "/search/" }}>
+            <svg class="search-icon" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+        </a>
+      </li>
+      <li>
+        <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle dark mode">
+          <svg id="moon" width="26" height="26" viewBox="0 0 24 24" fill="black" stroke="black" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" width="26" height="26" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    const dark = document.body.classList.toggle("dark");
+    localStorage.setItem("pref-theme", dark ? "dark" : "light");
+  });
+</script>

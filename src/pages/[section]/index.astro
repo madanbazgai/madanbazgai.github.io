@@ -1,0 +1,16 @@
+---
+import PostEntry from "../../components/PostEntry.astro";
+import { SECTIONS, type Section } from "../../config";
+import Base from "../../layouts/Base.astro";
+import { getPosts } from "../../lib/posts";
+
+export const getStaticPaths = () => Object.keys(SECTIONS).map((section) => ({ params: { section } }));
+
+const section = Astro.params.section as Section;
+const posts = await getPosts(section);
+---
+
+<Base title={SECTIONS[section].title} description={SECTIONS[section].description} list>
+  <h1 class="sr-only">{SECTIONS[section].title}</h1>
+  {posts.map((post) => <PostEntry post={post} />)}
+</Base>

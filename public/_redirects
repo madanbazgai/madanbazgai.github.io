@@ -1,0 +1,21 @@
+# Old URLs from the Hugo site and its hand-written sitemap
+/blogs/*                /blog/                          301
+/home/                  /                               301
+/projects/              https://github.com/madanbazgai  301
+/sitemap.xml            /sitemap-index.xml              301
+/index.xml              /blog/index.xml                 301
+/manifest.json          /manifest.webmanifest           301
+/blog/page/*            /blog/                          301
+/notes/page/*           /notes/                         301
+/tags/:tag/page/*       /tags/:tag/                     301
+/categories/:cat/page/* /categories/:cat/               301
+
+# Removed posts and their now-empty tags: tell search engines they are gone for good
+/blog/install-and-activate-office-2021/*  /404.html  410
+/blog/install-and-activate-windows-11/*   /404.html  410
+/activate-office.bat                      /404.html  410
+/activate-windows.bat                     /404.html  410
+/tags/windows/*                           /404.html  410
+/tags/office/*                            /404.html  410
+/tags/installation/*                      /404.html  410
+/categories/windows/*                     /404.html  410

@@ -1,6 +1,6 @@
-/.vscode
-/check
-/public
+node_modules/
+dist/
+.astro/
+.netlify/
 .DS_Store
-static/.DS_Store
-/static/images/.DS_Store
+.vscode/

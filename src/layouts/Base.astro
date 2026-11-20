@@ -1,0 +1,95 @@
+---
+import type { ImageMetadata } from "astro";
+import { Font, getImage } from "astro:assets";
+import { pwaInfo } from "virtual:pwa-info";
+import profile from "../assets/madmax.jpg";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE } from "../config";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Preview image for social cards; defaults to the profile photo. */
+  image?: ImageMetadata | string;
+  /** Keep the page out of search results (thin or utility pages). */
+  noindex?: boolean;
+  article?: { published: Date; tags: string[] };
+  /** schema.org structured data for this page. */
+  jsonLd?: object;
+  list?: boolean;
+}
+
+const { title, description = SITE.description, image, noindex = false, article, jsonLd, list = false } = Astro.props;
+const fullTitle = title ? `${title} | ${SITE.title}` : `${SITE.title} | ${SITE.tagline}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+// Social networks don't all read AVIF/WebP, so preview images are converted to JPEG.
+const preview =
+  typeof image === "string" ? image : (await getImage({ src: image ?? profile, format: "jpg", width: 1200 })).src;
+const previewUrl = new URL(preview, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.author} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="google-site-verification" content={SITE.googleSiteVerification} />
+    <meta name="theme-color" content="#000" />
+    <link rel="canonical" href={canonical} />
+    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE.title} blog`} href="/blog/index.xml" />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta property="og:title" content={title ?? SITE.title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={previewUrl} />
+    {article && <meta property="article:published_time" content={article.published.toISOString()} />}
+    {article && <meta property="article:author" content={SITE.author} />}
+    {article?.tags.map((tag) => <meta property="article:tag" content={tag} />)}
+    <meta name="twitter:card" content={image ? "summary_large_image" : "summary"} />
+    <meta name="twitter:site" content={SITE.twitter} />
+    <meta name="twitter:creator" content={SITE.twitter} />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <Font cssVariable="--font-madmax" preload />
+    <Font cssVariable="--font-geist-mono" />
+    <noscript><style>#theme-toggle, .top-link { display: none; }</style></noscript>
+  </head>
+  <body class:list={{ list }} id="top">
+    <script is:inline>
+      (localStorage.getItem("pref-theme") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")) ===
+        "dark" && document.body.classList.add("dark");
+    </script>
+    <Header />
+    <main class="main"><slot /></main>
+    <Footer />
+  </body>
+</html>
+
+<script>
+  import { registerSW } from "virtual:pwa-register";
+
+  registerSW({ immediate: true });
+
+  // Caches left behind by the old hand-written service worker.
+  caches?.delete("my-cache");
+  caches?.delete("image-cache");
+
+  // Clicking the logo offers "install app" when the browser supports it.
+  addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    document
+      .querySelector(".logo")
+      ?.addEventListener("click", () => (event as Event & { prompt(): void }).prompt(), { once: true });
+  });
+</script>

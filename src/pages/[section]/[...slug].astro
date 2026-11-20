@@ -1,0 +1,123 @@
+---
+import { getImage } from "astro:assets";
+import { render } from "astro:content";
+import profile from "../../assets/madmax.jpg";
+import ShareButtons from "../../components/ShareButtons.astro";
+import Toc from "../../components/Toc.astro";
+import { SECTIONS } from "../../config";
+import Base from "../../layouts/Base.astro";
+import { getPosts, postUrl, slugify, type Post } from "../../lib/posts";
+import { postSchema } from "../../lib/schema";
+
+export async function getStaticPaths() {
+  return (await getPosts()).map((post) => ({
+    params: { section: post.collection, slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: Post };
+const { Content, headings } = await render(post);
+const { title, description, tags, cover, showBreadcrumbs, showPostNav } = post.data;
+const image =
+  typeof cover?.image === "string"
+    ? cover.image
+    : (await getImage({ src: cover?.image ?? profile, format: "jpg", width: 1200 })).src;
+
+// Prev/next links only exist between blog posts, like before.
+const blog = await getPosts("blog");
+const index = blog.findIndex((p) => p.collection === post.collection && p.id === post.id);
+const [prev, next] = showPostNav && index >= 0 ? [blog[index - 1], blog[index + 1]] : [];
+---
+
+<Base
+  title={title}
+  description={description}
+  image={image}
+  article={{ published: post.data.date, tags: tags.filter((tag) => tag !== "pinned") }}
+  jsonLd={postSchema(post, Astro.site!, image)}
+>
+  <article class="post-single">
+    <header class="post-header">
+      {
+        showBreadcrumbs && (
+          <div class="breadcrumbs">
+            <a href="/">Home</a>&nbsp;»&nbsp;<a href={`/${post.collection}/`}>{SECTIONS[post.collection].title}</a>
+          </div>
+        )
+      }
+      <h1 class="post-title">{title}</h1>
+    </header>
+    <Toc headings={headings} />
+    <div class="post-content"><Content /></div>
+    <footer class="post-footer">
+      <ul class="post-tags">
+        {tags.map((tag) => <li><a href={`/tags/${slugify(tag)}/`}>{tag}</a></li>)}
+      </ul>
+      {
+        (prev || next) && (
+          <nav class="paginav">
+            {prev && (
+              <a class="prev" href={postUrl(prev)}>
+                <span class="title">« Prev</span>
+                <br />
+                <span>{prev.data.title}</span>
+              </a>
+            )}
+            {next && (
+              <a class="next" href={postUrl(next)}>
+                <span class="title">Next »</span>
+                <br />
+                <span>{next.data.title}</span>
+              </a>
+            )}
+          </nav>
+        )
+      }
+      <ShareButtons title={title} url={Astro.url.href} tags={tags} />
+    </footer>
+    <div id="fb-root"></div>
+    <div class="fb-comments" data-colorscheme="dark" data-href="https://madanbajgai.com.np/blogs" data-width="80%"
+      data-numposts="5">
+    </div>
+  </article>
+</Base>
+
+<script>
+  // "#" link shown when hovering a heading.
+  for (const heading of document.querySelectorAll(".post-content :is(h1, h2, h3, h4, h5, h6)[id]")) {
+    const anchor = Object.assign(document.createElement("a"), { className: "anchor", href: `#${heading.id}`, hidden: true });
+    anchor.ariaHidden = "true";
+    anchor.textContent = "#";
+    heading.append(anchor);
+  }
+
+  // Facebook comments: load the (heavy) SDK only when the reader scrolls near them.
+  const comments = document.querySelector(".fb-comments");
+  if (comments) {
+    new IntersectionObserver(
+      ([entry], observer) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        const sdk = Object.assign(document.createElement("script"), {
+          src: "https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=468333708425781",
+          async: true,
+          crossOrigin: "anonymous",
+        });
+        document.body.append(sdk);
+      },
+      { rootMargin: "400px" },
+    ).observe(comments);
+  }
+
+  // Copy button on code blocks.
+  for (const code of document.querySelectorAll<HTMLElement>(".post-content pre > code")) {
+    const button = Object.assign(document.createElement("button"), { className: "copy-code", textContent: "copy" });
+    button.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(code.textContent ?? "");
+      button.textContent = "copied!";
+      setTimeout(() => (button.textContent = "copy"), 2000);
+    });
+    code.parentElement!.append(button);
+  }
+</script>

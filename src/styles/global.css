@@ -1,0 +1,70 @@
+/*
+  Styles ported from PaperMod v6 (customised)
+  License: MIT https://github.com/adityatelange/hugo-PaperMod/blob/master/LICENSE
+  Copyright (c) 2020 nanxiaobei and adityatelange
+  Copyright (c) 2021-2022 adityatelange
+*/
+@import "./papermod/theme-vars.css";
+@import "./papermod/reset.css";
+@import "./papermod/main.css";
+@import "./papermod/header.css";
+@import "./papermod/footer.css";
+@import "./papermod/post-entry.css";
+@import "./papermod/post-single.css";
+@import "./papermod/profile-mode.css";
+@import "./papermod/search.css";
+@import "./papermod/terms.css";
+@import "./papermod/404.css";
+@import "./papermod/scroll-bar.css";
+@import "./papermod/zmedia.css";
+
+/* Site overrides */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.post-single {
+  font-family: sans-serif;
+}
+
+.post-title {
+  margin-bottom: 15px !important;
+  line-height: 1.3;
+}
+
+.post-description {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.pinned-article a {
+  border-bottom: 1px solid rgb(94, 231, 30);
+}
+
+code,
+pre {
+  font-family: var(--font-geist-mono) !important;
+}
+
+/* Shiki code blocks (gruvbox dark) */
+.post-content pre {
+  margin: 10px auto;
+  border-radius: var(--radius);
+  overflow: visible !important;
+}
+
+.post-content pre code {
+  color: #ebdbb2;
+  background: #282828 !important;
+}

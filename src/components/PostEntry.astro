@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import { SITE } from "../config";
+import { formatDate, postUrl, stats, type Post } from "../lib/posts";
+
+interface Props {
+  post: Post;
+  tagEntry?: boolean;
+}
+
+const { post, tagEntry = false } = Astro.props;
+const { title, date, cover, author = SITE.author, showReadingTime, showWordCount } = post.data;
+const { summary, minutes, words } = stats(post);
+const meta = [showReadingTime && `${minutes} min`, showWordCount && `${words} words`, author].filter(Boolean);
+---
+
+<article class:list={["post-entry", { "tag-entry": tagEntry }]}>
+  {
+    cover && (
+      <figure class="entry-cover">
+        {typeof cover.image === "string" ? (
+          <img loading="lazy" src={cover.image} alt={cover.alt} />
+        ) : (
+          <Image src={cover.image} alt={cover.alt} width={400} />
+        )}
+      </figure>
+    )
+  }
+  <div class="article-content">
+    <header class="entry-header"><h2>{title}</h2></header>
+    <div class="entry-content"><p>{summary}</p></div>
+    <footer class="entry-footer">
+      <span title={date.toISOString()}>{formatDate(date)}</span>{meta.map((item) => ` · ${item}`)}
+    </footer>
+  </div>
+  <a class="entry-link" aria-label={`post link to ${title}`} href={postUrl(post)}></a>
+</article>

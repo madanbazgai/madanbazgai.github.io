@@ -1,0 +1,28 @@
+---
+import Base from "../layouts/Base.astro";
+import { getTerms, type Taxonomy } from "../lib/posts";
+
+interface Props {
+  taxonomy: Taxonomy;
+  title: string;
+}
+
+const { taxonomy, title } = Astro.props;
+const terms = await getTerms(taxonomy);
+---
+
+<Base title={title} noindex list>
+  <h1 class="sr-only">{title}</h1>
+  <ul class="terms-tags">
+    {
+      terms.map(({ slug, name, posts }) => (
+        <li>
+          <a href={`/${taxonomy}/${slug}/`}>
+            {`${name} `}
+            <sup><strong><sup>{posts.length}</sup></strong></sup>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
