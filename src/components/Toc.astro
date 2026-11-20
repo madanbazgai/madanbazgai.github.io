@@ -47,3 +47,59 @@ const props = Astro.props;
     )
   )
 }
+
+<style>
+  .toc {
+    margin: 0 2px 40px 2px;
+    padding: 0.4em;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  :global(.dark) .toc {
+    background: var(--entry);
+  }
+
+  summary {
+    cursor: zoom-in;
+    margin-inline-start: 20px;
+  }
+
+  details[open] > summary {
+    cursor: zoom-out;
+  }
+
+  .details {
+    display: inline;
+    font-weight: 500;
+  }
+
+  .inner {
+    margin: 0 20px;
+    padding: 10px 20px;
+  }
+
+  li ul {
+    margin-inline-start: var(--gap);
+  }
+
+  a:hover {
+    box-shadow: 0 1px 0;
+  }
+
+  /* Smoothly expand/collapse where supported */
+  @media (prefers-reduced-motion: no-preference) {
+    details::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition:
+        block-size 0.25s,
+        content-visibility 0.25s allow-discrete;
+    }
+
+    details[open]::details-content {
+      block-size: auto;
+    }
+  }
+</style>

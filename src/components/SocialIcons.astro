@@ -43,7 +43,22 @@ const links = [
 <div class="social-icons">
   {
     links.map(({ title, url, svg }) => (
-      <a href={url} target={url.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer me" title={title} set:html={svg} />
+      <a href={url} target={url.startsWith("http") ? "_blank" : undefined} rel="noreferrer me" title={title} set:html={svg} />
     ))
   }
 </div>
+
+<style>
+  .social-icons {
+    padding: 12px 0;
+
+    a:not(:last-of-type) {
+      margin-inline-end: 12px;
+    }
+
+    :global(svg) {
+      width: 26px;
+      height: 26px;
+    }
+  }
+</style>

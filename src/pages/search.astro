@@ -6,7 +6,7 @@ import Base from "../layouts/Base.astro";
   <h1 class="sr-only">Search</h1>
   <div id="searchbox">
     <input id="searchInput" autofocus placeholder="Search any posts" aria-label="search" type="search" autocomplete="off" />
-    <ul id="searchResults" aria-label="search results"></ul>
+    <ul id="searchResults" aria-label="search results" aria-live="polite"></ul>
   </div>
 </Base>
 
@@ -60,3 +60,58 @@ import Base from "../layouts/Base.astro";
     }
   });
 </script>
+
+<style>
+  input {
+    width: 100%;
+    padding: 4px 10px;
+    color: var(--primary);
+    font-weight: bold;
+    border: 2px solid var(--tertiary);
+    border-radius: var(--radius);
+
+    &:focus {
+      border-color: var(--secondary);
+    }
+  }
+
+  #searchResults {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  /* Result items are created by the script, so they need :global() */
+  #searchResults :global(li) {
+    position: relative;
+    display: flex;
+    margin: 10px 0;
+    padding: 10px;
+    list-style: none;
+    font-weight: 500;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: transform 0.1s;
+  }
+
+  #searchResults :global(li:active),
+  #searchResults :global(.focus) {
+    transform: scale(0.98);
+  }
+
+  #searchResults :global(.focus) {
+    border: 2px solid var(--tertiary);
+  }
+
+  #searchResults :global(a) {
+    position: absolute;
+    inset: 0;
+  }
+
+  @media (prefers-reduced-motion) {
+    #searchResults :global(li:active),
+    #searchResults :global(.focus) {
+      transform: none;
+    }
+  }
+</style>

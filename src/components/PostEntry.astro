@@ -33,3 +33,101 @@ const { title, date, description, cover } = post.data;
   </div>
   <a class="entry-link" aria-label={`post link to ${title}`} href={postUrl(post)}></a>
 </article>
+
+<style>
+  .post-entry {
+    display: flex;
+    position: relative;
+    margin-bottom: var(--gap);
+    padding: var(--gap);
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: transform 0.1s;
+    container-type: inline-size;
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    @media (prefers-reduced-motion) {
+      &:active {
+        transform: none;
+      }
+    }
+  }
+
+  .entry-cover {
+    flex: 1;
+    margin-inline-end: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--secondary);
+
+    :global(img) {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      pointer-events: none;
+    }
+  }
+
+  .tag-entry .entry-cover {
+    display: none;
+  }
+
+  .article-content {
+    flex: 2.5;
+  }
+
+  h2 {
+    /* 15px on narrow cards up to 24px on wide ones */
+    font-size: clamp(15px, 7cqi - 24px, 1.5rem);
+    font-weight: 100;
+    line-height: 1.3;
+  }
+
+  .entry-content,
+  .entry-footer {
+    color: var(--secondary);
+    font-family:
+      system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+  }
+
+  .entry-content {
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .entry-footer {
+    font-size: 10px;
+  }
+
+  .entry-link {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Narrow cards (phones) */
+  @container (max-width: 560px) {
+    .entry-cover {
+      margin-inline-end: 10px;
+    }
+
+    .entry-content {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .entry-footer {
+      font-size: 12px;
+    }
+  }
+</style>

@@ -23,10 +23,10 @@ src/
   lib/posts.ts         sorting, summaries, taxonomies, dates
   lib/schema.ts        structured data (JSON-LD) for search engines
   layouts/Base.astro   page shell (head, header, footer)
-  components/          header, footer, post card, TOC, share buttons...
+  components/          header, footer, post card, TOC, share buttons... (each with its own scoped <style>)
   pages/               routes (/, /blog/, /notes/, /tags/, /categories/, /search/, feeds)
-  assets/              images (optimized at build time)
-  styles/              PaperMod-based styles + site overrides
+  assets/              images and fonts (optimized at build time)
+  styles/global.css    design tokens (light/dark), reset, base layout, article typography
 public/                static files served as-is (note PDFs, icons, redirects, headers)
 ```
 

@@ -54,7 +54,13 @@ export default defineConfig({
   // Responsive images: correct aspect ratio and a srcset so phones get smaller files.
   image: { layout: "constrained", responsiveStyles: true },
   markdown: {
-    shikiConfig: { theme: "gruvbox-dark-medium" },
+    shikiConfig: {
+      // Light and dark variants; global.css picks one with light-dark() based on the page theme.
+      themes: { light: "github-light", dark: "gruvbox-dark-medium" },
+      defaultColor: false,
+      // Drop Shiki's inline styles on <pre>; global.css styles code blocks instead.
+      transformers: [{ pre: (node) => void delete node.properties.style }],
+    },
   },
   fonts: [
     {
