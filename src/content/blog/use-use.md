@@ -11,8 +11,6 @@ cover:
 
 ***
 
-ℹ️ This article is authentic, fully organic, handcrafted by a human mind. No AI was harmed or used in generating the ideas for `content` and `title`.
-
 **`'use use'`** is a meme going around in a react ecosystem, with the introduction of many use directives like:
 
 - `"use strict"`

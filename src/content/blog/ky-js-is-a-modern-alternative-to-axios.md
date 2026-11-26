@@ -9,8 +9,6 @@ cover:
   alt: "Ky.js vs Axios comparison"
 ---
 
-ℹ️ This article is authentic, fully organic, handcrafted by a human mind. No AI was harmed or used in generating the ideas for content and title.
-
 ![Ky vs Axios](../../assets/images/blogicon/kyvsaxios.png)
 
 [Jump to code 🔻](#installation)

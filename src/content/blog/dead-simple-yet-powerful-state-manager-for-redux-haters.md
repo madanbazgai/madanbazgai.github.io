@@ -9,8 +9,6 @@ cover:
   alt: "Dead Simple Yet Powerful Global State Manager for Redux Haters"
 ---
 
-ℹ️ This article is authentic, fully organic, handcrafted by a human mind. No AI was harmed or used in generating the ideas for content and title.
-
 **`themeAtom.ts`**
 
 ```typescript

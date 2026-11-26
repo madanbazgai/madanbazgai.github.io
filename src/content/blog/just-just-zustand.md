@@ -9,8 +9,6 @@ cover:
   alt: "Zustand bear mascot"
 ---
 
-ℹ️ This article is authentic, fully organic, handcrafted by a human mind. No AI was harmed or used in generating the ideas for content and title.
-
 Before diving into concepts, let’s first look at some code and see how simple and elegant Zustand can be.
 
 ---
